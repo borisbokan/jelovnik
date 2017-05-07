@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="kategorije">
+
+        <item>Kuvana jela</item>
+        <item>Jela sa rostilja</item>
+        <item>Desert</item>
+
+
+    </string-array>
+    
+    
+</resources>

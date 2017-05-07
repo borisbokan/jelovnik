@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/txtNazivJela_lista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:layout_weight="0"
+        android:hint="text"
+        android:padding="3dp"
+        android:text="Naziv jela"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,InefficientWeight" />
+
+    <TextView
+        android:id="@+id/txtKategorija_lista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="0"
+        android:paddingLeft="13dp"
+        android:text="TextView"
+        android:textColor="?android:attr/textColorHint"
+        android:textSize="14sp"
+        android:textStyle="normal|italic"
+        tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
+
+</LinearLayout>

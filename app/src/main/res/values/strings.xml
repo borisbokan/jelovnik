@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jelovnik</string>
+    <string name="detalji_jela">Detalji jela</string>
+    <string name="naziv_jela">Naziv jela</string>
+    <string name="kategorija">Kategorija jela</string>
+    <string name="opis_jela">Opis jela</string>
+    <string name="btn_poruci">Poruci jelo</string>
+</resources>
