@@ -19,7 +19,7 @@ public class FirstActivity extends Activity {
 
 	public static final String DETALJI_POZ_KEY="position";
 
-	private ExpandableListAdapter exAdapter;
+
 	private String[] kategorije;
 
 	private ArrayList<Jelo> jela;
