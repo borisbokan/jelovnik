@@ -25,6 +25,7 @@ import rs.aleph.android.example12.R;
 // Each activity extends Activity class
 public class FirstActivity extends Activity {
 
+	//..
 	public static final String DETALJI_POZ_KEY="position";
 	public static final String DETALJI_GROUP_POZ_KEY="gro_position";
 
