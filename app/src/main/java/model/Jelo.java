@@ -13,7 +13,6 @@ public class Jelo {
     private String naziv;
     private String opis;
     private double cena;
-    private String sastojci;
     private Kategorija kategorija;
     private float kolicina;
     private ArrayList<Sastojak> arlSastojciKalorijskeVrednosti;
@@ -28,17 +27,16 @@ public class Jelo {
      * @param _naziv
      * @param _opis
      * @param _cena
-     * @param _sastojci
      * @param _kolicina
      */
-    public Jelo(String _slika,String _naziv, String _opis, Double _cena,String _sastojci,float _kolicina){
+    public Jelo(String _slika,String _naziv, String _opis, Double _cena,float _kolicina){
 
         this.slika=_slika;
         this.naziv=_naziv;
         this.opis=_opis;
         this.cena=_cena;
-        this.sastojci=_sastojci;
         this.kolicina=_kolicina;
+        arlSastojciKalorijskeVrednosti=new ArrayList<>();
 
     }
 
@@ -80,14 +78,6 @@ public class Jelo {
 
     public void setCena(double cena) {
         this.cena = cena;
-    }
-
-    public String getSastojci() {
-        return sastojci;
-    }
-
-    public void setSastojci(String sastojci) {
-        this.sastojci = sastojci;
     }
 
     public float getKolicina() {

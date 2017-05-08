@@ -90,7 +90,9 @@
                 android:hint="Opis"
                 android:padding="7dp"
                 android:text="@string/opis_jela"
-                android:textSize="12sp"
+                android:textColor="?attr/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="normal|bold|italic"
                 tools:ignore="HardcodedText" />
 
             <TextView
@@ -109,7 +111,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btnParuci_detalji"
+                android:id="@+id/btnPoruci_detalji"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"

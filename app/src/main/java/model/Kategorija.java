@@ -17,7 +17,9 @@ public class Kategorija {
     }
 
     public Kategorija(String _nazivKategorije){
+
         this.naziv=_nazivKategorije;
+        jela=new ArrayList<>();
     }
 
     public int getId() {

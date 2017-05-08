@@ -19,10 +19,11 @@ import java.text.DecimalFormat;
 import java.text.Format;
 
 import model.Jelo;
+import model.Sastojak;
 import rs.aleph.android.example12.R;
 
 // Each activity extends Activity class
-public class SecondActivity extends Activity {
+public class SecondActivity extends Activity implements View.OnClickListener {
 
     private ArrayAdapter adJelaDetalji;
     private TextView txvNaziv,txvOpis,txvSadrzaj,txvCena,txvKategorija;
@@ -46,7 +47,10 @@ public class SecondActivity extends Activity {
         txvOpis=(TextView)findViewById(R.id.txtOpis_detalji);
         txvSadrzaj=(TextView)findViewById(R.id.txtSastav_detalji);
         txvCena=(TextView)findViewById(R.id.txtCena_detalji);
+        btnPoruci=(Button)findViewById(R.id.btnPoruci_detalji);
 
+        //Slusaoc dogadjaja dugmeta poruci
+        btnPoruci.setOnClickListener(this);
 
         //Adapter iz prve aktivnosti
         adJelaDetalji=FirstActivity.adJela;
@@ -64,14 +68,33 @@ public class SecondActivity extends Activity {
         DecimalFormat decFor=new DecimalFormat("#.00");
         String cena=decFor.format(jelo.getCena());
 
+        //Uzimanje sastojaka jela
+        String sastojci="";
+
+        for (Sastojak sastojak : jelo.getArlSastojciKalorijskeVrednosti()) {
+            sastojci+=sastojak.getNazivSastojka() + " - (kCal:" + String.valueOf(sastojak.getKalorijskaVrednost()) + "/" + String.valueOf(sastojak.getKolicina()) + " " + sastojak.getJedinicaMere() +")\n";
+        }
+
         txvNaziv.setText(jelo.getNaziv());
         txvOpis.setText(jelo.getOpis());
         txvKategorija.setText(jelo.getKategorija().getNaziv());
-        txvSadrzaj.setText(jelo.getSastojci());
+        txvSadrzaj.setText(sastojci);
         txvCena.setText(cena + " din");
 
 
     }
 
 
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+
+            case R.id.btnPoruci_detalji:
+                Toast.makeText(this,"Kliknuo poruci jelo..",Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+    }
 }
