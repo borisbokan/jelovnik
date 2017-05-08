@@ -19,13 +19,14 @@ import java.text.DecimalFormat;
 import java.text.Format;
 
 import model.Jelo;
+import model.JelovnikExpandAdapter;
 import model.Sastojak;
 import rs.aleph.android.example12.R;
 
 // Each activity extends Activity class
 public class SecondActivity extends Activity implements View.OnClickListener {
 
-    private ArrayAdapter adJelaDetalji;
+    private JelovnikExpandAdapter exadJelaDetalji;
     private TextView txvNaziv,txvOpis,txvSadrzaj,txvCena,txvKategorija;
     private Button btnPoruci;
     private ImageView imgSlika;
@@ -39,6 +40,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_second);
 
         int vrednostPoz=getIntent().getExtras().getInt(FirstActivity.DETALJI_POZ_KEY);
+        int vrednostGropuPoz=getIntent().getExtras().getInt(FirstActivity.DETALJI_GROUP_POZ_KEY);
         Toast.makeText(this,"Test izabrane stavke: " + String.valueOf(vrednostPoz),Toast.LENGTH_LONG).show();
 
         imgSlika=(ImageView)findViewById(R.id.slikaJela);
@@ -53,8 +55,9 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         btnPoruci.setOnClickListener(this);
 
         //Adapter iz prve aktivnosti
-        adJelaDetalji=FirstActivity.adJela;
-        Jelo jelo=(Jelo)adJelaDetalji.getItem(vrednostPoz);
+        exadJelaDetalji=FirstActivity.expAdapterJelovnik;
+
+        Jelo jelo=(Jelo)exadJelaDetalji.getChild(vrednostGropuPoz,vrednostPoz);
 
         InputStream inpStr=null;
         try {

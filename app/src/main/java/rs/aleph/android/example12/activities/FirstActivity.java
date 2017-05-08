@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.xml.transform.sax.SAXTransformerFactory;
 
 import model.Jelo;
+import model.JelovnikExpandAdapter;
 import model.Kategorija;
 import model.Sastojak;
 import rs.aleph.android.example12.R;
@@ -21,12 +26,16 @@ import rs.aleph.android.example12.R;
 public class FirstActivity extends Activity {
 
 	public static final String DETALJI_POZ_KEY="position";
+	public static final String DETALJI_GROUP_POZ_KEY="gro_position";
+
 
 
 	private String[] kategorije;
 
 	private ArrayList<Jelo> jela;
-	public static AdapterJela adJela;
+	private ArrayList<Kategorija> obKategorije;
+
+	public static JelovnikExpandAdapter expAdapterJelovnik;
 
 	// onCreate method is a lifecycle method called when he activity is starting
 	@Override
@@ -36,21 +45,61 @@ public class FirstActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		// setContentView method draws UI
 		setContentView(R.layout.activity_main);
-		ListView lvJela=(ListView)findViewById(R.id.lvJela);
+		ExpandableListView exlvJela=(ExpandableListView)findViewById(R.id.exlvJela);
 
 		//Iz resursa array
 		kategorije=getResources().getStringArray(R.array.kategorije);
 
+		//Stavljam u kolekciju generickog tipa, kategorija.
+		obKategorije=new ArrayList<>();
+		for (String stavka : kategorije) {
+			obKategorije.add(new Kategorija(stavka));
+
+		}
+
 		//Unos podataka (imitacija povlacenja podataka iz DB)
 		inicirajPodatke();
 
-		//ArrayAdapter<String> kate=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,kategorije);
 
-		adJela=new AdapterJela(this,R.layout.stavka_liste_jela,jela);
-		lvJela.setAdapter(adJela);
+		HashMap<String, List<Jelo>> expandableListDetail = new HashMap<String, List<Jelo>>();
 
 
-		lvJela.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		expandableListDetail.put(obKategorije.get(0).getNaziv(),obKategorije.get(0).getJela());
+		expandableListDetail.put(obKategorije.get(1).getNaziv(),obKategorije.get(1).getJela());
+		expandableListDetail.put(obKategorije.get(2).getNaziv(),obKategorije.get(2).getJela());
+
+		expAdapterJelovnik=new JelovnikExpandAdapter(this,new ArrayList<String>(expandableListDetail.keySet()),expandableListDetail);
+
+		exlvJela.setAdapter(expAdapterJelovnik);
+		exlvJela.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+			@Override
+			public void onGroupExpand(int i) {
+				Toast.makeText(getBaseContext(),"Otvori grupu",Toast.LENGTH_SHORT).show();
+			}
+		});
+
+
+		exlvJela.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+			@Override
+			public void onGroupCollapse(int i) {
+				Toast.makeText(getBaseContext(),"Zatvori grupu",Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		exlvJela.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+			@Override
+			public boolean onChildClick(ExpandableListView expandableListView, View view, int groPos, int position, long l) {
+				Intent intdetalji=new Intent(FirstActivity.this,SecondActivity.class);
+				intdetalji.putExtra(DETALJI_POZ_KEY,position);
+				intdetalji.putExtra(DETALJI_GROUP_POZ_KEY,groPos);
+				startActivity(intdetalji);
+				return false;
+			}
+		});
+
+
+
+		/*exlvJela.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -59,19 +108,14 @@ public class FirstActivity extends Activity {
 
 				startActivity(intdetalji);
 			}
-		});
+		});*/
 
 	}
 
 
 	private void inicirajPodatke(){
 
-		//Stavljam u kolekciju generickog tipa, kategorija.
-		ArrayList<Kategorija> obKategorije=new ArrayList<>();
-		for (String stavka : kategorije) {
-			obKategorije.add(new Kategorija(stavka));
 
-		}
 
 		//Moguci sastojci
 		Sastojak sol=new Sastojak("Sol",4.34f,99.99f,"gr");
