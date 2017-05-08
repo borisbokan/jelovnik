@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Created by borcha on 07.05.17..
  */
@@ -14,6 +16,7 @@ public class Jelo {
     private String sastojci;
     private Kategorija kategorija;
     private float kolicina;
+    private ArrayList<Sastojak> arlSastojciKalorijskeVrednosti;
 
     public Jelo(){
             //Jelo+Jelo(konstruct) = bit
@@ -101,6 +104,23 @@ public class Jelo {
 
     public void setKategorija(Kategorija kategorija) {
         this.kategorija = kategorija;
+    }
+
+    public void setKolicina(float kolicina) {
+        this.kolicina = kolicina;
+    }
+
+    public ArrayList<Sastojak> getArlSastojciKalorijskeVrednosti() {
+        return arlSastojciKalorijskeVrednosti;
+    }
+
+    public void setArlSastojciKalorijskeVrednosti(ArrayList<Sastojak> arlSastojciKalorijskeVrednosti) {
+        this.arlSastojciKalorijskeVrednosti = arlSastojciKalorijskeVrednosti;
+    }
+
+    //pomocna metoda
+    public void addArlSastojciKalorijskeVrednosti(Sastojak _sastojak) {
+        arlSastojciKalorijskeVrednosti.add(_sastojak);
     }
 
     public String toString(){
