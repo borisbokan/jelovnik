@@ -99,18 +99,6 @@ public class FirstActivity extends Activity {
 		});
 
 
-
-		/*exlvJela.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-				Intent intdetalji=new Intent(FirstActivity.this,SecondActivity.class);
-				intdetalji.putExtra(DETALJI_POZ_KEY,i);
-
-				startActivity(intdetalji);
-			}
-		});*/
-
 	}
 
 
