@@ -118,7 +118,7 @@ public class Jelo {
         this.arlSastojciKalorijskeVrednosti = arlSastojciKalorijskeVrednosti;
     }
 
-    //pomocna metoda
+    //pomocna metodaa
     public void addArlSastojciKalorijskeVrednosti(Sastojak _sastojak) {
         arlSastojciKalorijskeVrednosti.add(_sastojak);
     }
