@@ -17,19 +17,19 @@ public class Sastojak {
 
     /**
      * Parametri konstruktora
-     * @param _id;
      * @param _nazivSastojka
      * @param _kalorijskaVrednost
      * @param _kolicina
      * @param _jedinicaMere
      */
-    public Sastojak(int _id,String _nazivSastojka, float _kalorijskaVrednost,float _kolicina,String _jedinicaMere){
-        this.id=_id;
+    public Sastojak(String _nazivSastojka, float _kalorijskaVrednost,float _kolicina,String _jedinicaMere){
+
         this.nazivSastojka=_nazivSastojka;
         this.kalorijskaVrednost=_kalorijskaVrednost;
         this.kolicina=_kolicina;
         this.jedinicaMere=_jedinicaMere;
     }
+
 
     public int getId() {
         return id;
@@ -70,6 +70,8 @@ public class Sastojak {
     public void setKolicina(float kolicina) {
         this.kolicina = kolicina;
     }
+
+
 
     public String toString(){
         return "Sastojak i kal. vred.= (" + this.id + " - " + this.nazivSastojka + " " + String.valueOf(this.kalorijskaVrednost) +")";
