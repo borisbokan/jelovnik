@@ -48,16 +48,17 @@
             android:text="@string/opis_jela"
             android:textSize="18sp"
             android:textStyle="normal|bold|italic"/>
-        <TextView
-            android:id="@+id/txtKategorija_detalji"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:hint="Opis"
-            android:padding="7dp"
-            android:text="@string/kategorija"
-            android:textSize="14sp"
-            android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/txtKategorija_detalji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:hint="Opis"
+        android:paddingLeft="25dp"
+        android:text="@string/kategorija"
+        android:textSize="14sp"
+        android:textStyle="italic" />
 
         <Spinner
             android:layout_width="match_parent"
