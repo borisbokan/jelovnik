@@ -51,7 +51,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
 
         imgSlika=(ImageView)findViewById(R.id.slikaJela);
         txvNaziv=(TextView)findViewById(R.id.txtNazivJelo_detalji);
-        txvKategorija=(TextView)findViewById(R.id.txtOpisJelo_detalji);
+        txvKategorija=(TextView)findViewById(R.id.txtKategorija_detalji);
         txvOpis=(TextView)findViewById(R.id.txtOpis_detalji);
         txvCena=(TextView)findViewById(R.id.txtCena_detalji);
         btnPoruci=(Button)findViewById(R.id.btnPoruci_detalji);
