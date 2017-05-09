@@ -6,95 +6,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
-
-            <ImageView
-                android:id="@+id/slikaJela"
-                android:layout_width="127dp"
-                android:layout_height="89dp"
-                android:layout_margin="4dp"
-                android:padding="4dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/splash"
-                tools:ignore="ContentDescription" />
-
-
-
-                <TextView
-                    android:id="@+id/txtNazivJelo_detalji"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="@string/naziv_jela"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"
-                    tools:ignore="HardcodedText,NestedWeights" />
-
-                <TextView
-                    android:id="@+id/txtOpisJelo_detalji"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:layout_weight="1"
-                    android:elevation="1dp"
-                    android:textColor="@android:color/black"
-                    android:padding="5dp"
-                    android:text="@string/kategorija"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/txtCena_detalji"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="0,00 din"
-                    android:textAlignment="center"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
-
-
-
-            <TextView
-                android:id="@+id/txtOpis_detalji"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:hint="Opis"
-                android:padding="7dp"
-                android:text="@string/opis_jela"
-                android:textSize="18sp"
-                android:textStyle="normal|bold|italic"
-                tools:ignore="HardcodedText" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spKategorije_detalji"
-                android:layout_margin="7dp"
-                android:padding="6dp" />
-
-
-
-                <ListView
-                    android:id="@+id/lsvSastojci_detalji"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-
-    <Button
-        android:id="@+id/btnPoruci_detalji"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Poruci jelo"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/slikaJela"
+            android:layout_width="match_parent"
+            android:layout_height="89dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/splash" />
+
+        <TextView
+            android:id="@+id/txtNazivJelo_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/naziv_jela"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtCena_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="0,00 din"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/txtOpisJelo_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:elevation="1dp"
+            android:textColor="@android:color/black"
+            android:padding="5dp"
+            android:text="@string/kategorija"
+            android:textSize="14sp" />
+
+
+    <TextView
+            android:id="@+id/txtOpis_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:hint="Opis"
+            android:padding="7dp"
+            android:text="@string/opis_jela"
+            android:textSize="18sp"
+            android:textStyle="normal|bold|italic"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spKategorije_detalji"
+            android:layout_margin="7dp"
+            android:padding="6dp" />
+
+
+
+            <ListView
+                android:id="@+id/lsvSastojci_detalji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:id="@+id/btnPoruci_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Poruci jelo"
 
         />
 
 
 
-        </LinearLayout>
+     </LinearLayout>

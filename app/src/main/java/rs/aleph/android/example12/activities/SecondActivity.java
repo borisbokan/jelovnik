@@ -85,20 +85,15 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         String cena=decFor.format(jelo.getCena());
 
 
-
-       /* for (Sastojak sastojak : jelo.getArlSastojciKalorijskeVrednosti()) {
-            sastojci+=sastojak.getNazivSastojka() + " - (kCal:" + String.valueOf(sastojak.getKalorijskaVrednost()) + "/" + String.valueOf(sastojak.getKolicina()) + " " + sastojak.getJedinicaMere() +")\n";
-        }
-*/
-        ArrayList<Sastojak> sastojci=jelo.getArlSastojciKalorijskeVrednosti();
-        ArrayAdapter<Sastojak> adSastojci=new ArrayAdapter<Sastojak>(this,android.R.layout.simple_list_item_1,sastojci);
-        lsvSastojci.setAdapter(adSastojci);
-
-
         txvNaziv.setText(jelo.getNaziv());
         txvOpis.setText(jelo.getOpis());
         txvKategorija.setText(jelo.getKategorija().getNaziv());
         txvCena.setText(cena + " din");
+
+
+        ArrayList<Sastojak> sastojci=jelo.getArlSastojciKalorijskeVrednosti();
+        ArrayAdapter<Sastojak> adSastojci=new ArrayAdapter<Sastojak>(this,android.R.layout.simple_list_item_1,sastojci);
+        lsvSastojci.setAdapter(adSastojci);
 
     }
 
