@@ -10,14 +10,17 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StreamCorruptedException;
 import java.text.DecimalFormat;
 import java.text.Format;
+import java.util.ArrayList;
 
 import model.Jelo;
 import model.JelovnikExpandAdapter;
@@ -31,7 +34,8 @@ public class SecondActivity extends Activity implements View.OnClickListener {
     private TextView txvNaziv,txvOpis,txvCena,txvKategorija;
     private Button btnPoruci;
     private ImageView imgSlika;
-    Spinner spkategorije;
+    private Spinner spkategorije;
+    private ListView lsvSastojci;
 
     // onCreate method is a lifecycle method called when he activity is starting
     @Override
@@ -52,6 +56,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         txvCena=(TextView)findViewById(R.id.txtCena_detalji);
         btnPoruci=(Button)findViewById(R.id.btnPoruci_detalji);
         spkategorije=(Spinner)findViewById(R.id.spKategorije_detalji);
+        lsvSastojci=(ListView)findViewById(R.id.lsvSastojci_detalji);
 
 
         String[] kategorije=this.getResources().getStringArray(R.array.kategorije);
@@ -79,18 +84,21 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         DecimalFormat decFor=new DecimalFormat("#.00");
         String cena=decFor.format(jelo.getCena());
 
-        //Uzimanje sastojaka jela
-        String sastojci="";
 
-        for (Sastojak sastojak : jelo.getArlSastojciKalorijskeVrednosti()) {
+
+       /* for (Sastojak sastojak : jelo.getArlSastojciKalorijskeVrednosti()) {
             sastojci+=sastojak.getNazivSastojka() + " - (kCal:" + String.valueOf(sastojak.getKalorijskaVrednost()) + "/" + String.valueOf(sastojak.getKolicina()) + " " + sastojak.getJedinicaMere() +")\n";
         }
+*/
+        ArrayList<Sastojak> sastojci=jelo.getArlSastojciKalorijskeVrednosti();
+        ArrayAdapter<Sastojak> adSastojci=new ArrayAdapter<Sastojak>(this,android.R.layout.simple_list_item_1,sastojci);
+        lsvSastojci.setAdapter(adSastojci);
+
 
         txvNaziv.setText(jelo.getNaziv());
         txvOpis.setText(jelo.getOpis());
         txvKategorija.setText(jelo.getKategorija().getNaziv());
         txvCena.setText(cena + " din");
-
 
     }
 

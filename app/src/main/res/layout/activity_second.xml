@@ -6,16 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="UselessParent"
-        android:orientation="vertical">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+
 
             <ImageView
                 android:id="@+id/slikaJela"
@@ -27,12 +19,7 @@
                 android:src="@drawable/splash"
                 tools:ignore="ContentDescription" />
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:ignore="InefficientWeight">
+
 
                 <TextView
                     android:id="@+id/txtNazivJelo_detalji"
@@ -42,7 +29,7 @@
                     android:layout_weight="1"
                     android:padding="5dp"
                     android:text="@string/naziv_jela"
-                    android:textColor="@android:color/holo_orange_light"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp"
                     tools:ignore="HardcodedText,NestedWeights" />
 
@@ -53,11 +40,10 @@
                     android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:elevation="1dp"
+                    android:textColor="@android:color/black"
                     android:padding="5dp"
                     android:text="@string/kategorija"
-                    android:textColor="@android:color/holo_orange_light"
-                    android:textSize="14sp"
-                    tools:ignore="HardcodedText,UnusedAttribute" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txtCena_detalji"
@@ -69,18 +55,10 @@
                     android:padding="5dp"
                     android:text="0,00 din"
                     android:textAlignment="center"
-                    android:textColor="?android:attr/textColorHint"
                     android:textSize="24sp"
                     tools:ignore="HardcodedText" />
-            </LinearLayout>
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/lyOpis">
 
             <TextView
                 android:id="@+id/txtOpis_detalji"
@@ -90,7 +68,6 @@
                 android:hint="Opis"
                 android:padding="7dp"
                 android:text="@string/opis_jela"
-                android:textColor="?attr/colorAccent"
                 android:textSize="18sp"
                 android:textStyle="normal|bold|italic"
                 tools:ignore="HardcodedText" />
@@ -102,29 +79,22 @@
                 android:layout_margin="7dp"
                 android:padding="6dp" />
 
+
+
+                <ListView
+                    android:id="@+id/lsvSastojci_detalji"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/btnPoruci_detalji"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Poruci jelo"
+
+        />
+
+
+
         </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/btnPoruci_detalji"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:foregroundGravity="center_vertical|center_horizontal|center"
-                android:gravity="center"
-                android:padding="12dp"
-                android:text="@string/btn_poruci"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-    </LinearLayout>
-
-
-
-</LinearLayout>
-

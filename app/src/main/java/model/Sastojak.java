@@ -17,12 +17,14 @@ public class Sastojak {
 
     /**
      * Parametri konstruktora
+     * @param _id;
      * @param _nazivSastojka
      * @param _kalorijskaVrednost
      * @param _kolicina
      * @param _jedinicaMere
      */
-    public Sastojak(String _nazivSastojka, float _kalorijskaVrednost,float _kolicina,String _jedinicaMere){
+    public Sastojak(int _id,String _nazivSastojka, float _kalorijskaVrednost,float _kolicina,String _jedinicaMere){
+        this.id=_id;
         this.nazivSastojka=_nazivSastojka;
         this.kalorijskaVrednost=_kalorijskaVrednost;
         this.kolicina=_kolicina;
