@@ -19,6 +19,7 @@ public class Jelo {
 
     public Jelo(){
             //Jelo+Jelo(konstruct) = bit
+        arlSastojciKalorijskeVrednosti=new ArrayList<>();
     }
 
     /**

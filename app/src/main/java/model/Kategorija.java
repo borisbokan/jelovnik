@@ -13,7 +13,7 @@ public class Kategorija {
     public ArrayList<Jelo> jela;
 
     public Kategorija(){
-
+        jela=new ArrayList<>();
     }
 
     public Kategorija(String _nazivKategorije){
@@ -37,7 +37,6 @@ public class Kategorija {
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
-
 
     public ArrayList<Jelo> getJela() {
         return jela;
