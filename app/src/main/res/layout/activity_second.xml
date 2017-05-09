@@ -95,14 +95,13 @@
                 android:textStyle="normal|bold|italic"
                 tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/txtSastav_detalji"
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/spKategorije_detalji"
                 android:layout_margin="7dp"
-                android:hint="Sastav jela"
-                android:padding="6dp"
-                tools:ignore="HardcodedText" />
+                android:padding="6dp" />
+
         </LinearLayout>
 
         <LinearLayout

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +28,10 @@ import rs.aleph.android.example12.R;
 public class SecondActivity extends Activity implements View.OnClickListener {
 
     private JelovnikExpandAdapter exadJelaDetalji;
-    private TextView txvNaziv,txvOpis,txvSadrzaj,txvCena,txvKategorija;
+    private TextView txvNaziv,txvOpis,txvCena,txvKategorija;
     private Button btnPoruci;
     private ImageView imgSlika;
+    Spinner spkategorije;
 
     // onCreate method is a lifecycle method called when he activity is starting
     @Override
@@ -47,9 +49,15 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         txvNaziv=(TextView)findViewById(R.id.txtNazivJelo_detalji);
         txvKategorija=(TextView)findViewById(R.id.txtOpisJelo_detalji);
         txvOpis=(TextView)findViewById(R.id.txtOpis_detalji);
-        txvSadrzaj=(TextView)findViewById(R.id.txtSastav_detalji);
         txvCena=(TextView)findViewById(R.id.txtCena_detalji);
         btnPoruci=(Button)findViewById(R.id.btnPoruci_detalji);
+        spkategorije=(Spinner)findViewById(R.id.spKategorije_detalji);
+
+
+        String[] kategorije=this.getResources().getStringArray(R.array.kategorije);
+        ArrayAdapter<String> spAdapterKategorije=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,kategorije);
+        spkategorije.setAdapter(spAdapterKategorije);
+
 
         //Slusaoc dogadjaja dugmeta poruci
         btnPoruci.setOnClickListener(this);
@@ -81,7 +89,6 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         txvNaziv.setText(jelo.getNaziv());
         txvOpis.setText(jelo.getOpis());
         txvKategorija.setText(jelo.getKategorija().getNaziv());
-        txvSadrzaj.setText(sastojci);
         txvCena.setText(cena + " din");
 
 
