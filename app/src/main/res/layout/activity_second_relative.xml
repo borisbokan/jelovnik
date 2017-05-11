@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--<ListView
+        android:id="@+id/lsvSastojci_detalji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>-->
+
+    <TextView
+        android:id="@+id/txtNazivJelo_detalji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:text="@string/naziv_jela"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="17dp"
+        android:layout_alignTop="@+id/slikaJela"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp" />
+
+    <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spKategorije_detalji"
+        android:padding="6dp"
+        android:layout_below="@+id/txtOpis_detalji"
+        android:layout_alignLeft="@+id/txtNazivJelo_detalji"
+        android:layout_alignStart="@+id/txtNazivJelo_detalji" />
+
+    <ImageView
+        android:id="@+id/slikaJela"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:padding="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash"
+        tools:ignore="ContentDescription"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/txtNazivJelo_detalji"
+        android:layout_alignStart="@+id/txtNazivJelo_detalji" />
+
+    <TextView
+                android:id="@+id/txtOpis_detalji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        android:hint="Opis"
+                android:padding="7dp"
+                android:text="@string/opis_jela"
+                android:textSize="18sp"
+                android:textStyle="normal|bold|italic"
+        android:layout_below="@+id/txtOpisJelo_detalji"
+        android:layout_alignLeft="@+id/spKategorije_detalji"
+        android:layout_alignStart="@+id/spKategorije_detalji" />
+
+
+
+    <TextView
+        android:id="@+id/txtOpisJelo_detalji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:elevation="1dp"
+        android:textColor="@android:color/black"
+        android:padding="5dp"
+        android:text="@string/kategorija"
+        android:textSize="14sp"
+        android:layout_below="@+id/slikaJela"
+        android:layout_alignLeft="@+id/txtOpis_detalji"
+        android:layout_alignStart="@+id/txtOpis_detalji" />
+
+    <TextView
+        android:id="@+id/txtCena_detalji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="0,00 din"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_above="@+id/txtOpisJelo_detalji"
+        android:layout_toRightOf="@+id/txtOpisJelo_detalji"
+        android:layout_toEndOf="@+id/txtOpisJelo_detalji" />
+
+    <ListView android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/lsvSastojci_detalji"
+        android:layout_above="@+id/spKategorije_detalji"/>
+
+    <Button
+        android:id="@+id/btnPoruci_detalji"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="Poruci jelo"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical|center_horizontal" />
+
+</RelativeLayout>

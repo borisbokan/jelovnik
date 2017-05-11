@@ -1,11 +1,8 @@
 package rs.aleph.android.example12.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.Layout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,9 +14,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StreamCorruptedException;
 import java.text.DecimalFormat;
-import java.text.Format;
 import java.util.ArrayList;
 
 import model.Jelo;
@@ -43,7 +38,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
 
         // Each lifecycle method should call the method it overrides
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_second_relative);
 
         int vrednostPoz=getIntent().getExtras().getInt(FirstActivity.DETALJI_POZ_KEY);
         int vrednostGropuPoz=getIntent().getExtras().getInt(FirstActivity.DETALJI_GROUP_POZ_KEY);

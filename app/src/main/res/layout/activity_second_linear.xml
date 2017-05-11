@@ -7,8 +7,6 @@
     android:layout_height="match_parent">
 
 
-
-
             <ImageView
                 android:id="@+id/slikaJela"
                 android:layout_width="127dp"
@@ -18,7 +16,6 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/splash"
                 tools:ignore="ContentDescription" />
-
 
 
                 <TextView
@@ -81,17 +78,14 @@
 
 
 
-                <ListView
-                    android:id="@+id/lsvSastojci_detalji"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
 
 
-    <Button
-        android:id="@+id/btnPoruci_detalji"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Poruci jelo"
+
+        <Button
+            android:id="@+id/btnPoruci_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Poruci jelo"
 
         />
 
