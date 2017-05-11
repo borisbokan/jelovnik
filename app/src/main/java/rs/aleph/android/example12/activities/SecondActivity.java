@@ -38,7 +38,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
 
         // Each lifecycle method should call the method it overrides
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second_relative);
+        setContentView(R.layout.activity_second_linear);
 
         int vrednostPoz=getIntent().getExtras().getInt(FirstActivity.DETALJI_POZ_KEY);
         int vrednostGropuPoz=getIntent().getExtras().getInt(FirstActivity.DETALJI_GROUP_POZ_KEY);
@@ -51,7 +51,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         txvCena=(TextView)findViewById(R.id.txtCena_detalji);
         btnPoruci=(Button)findViewById(R.id.btnPoruci_detalji);
         spkategorije=(Spinner)findViewById(R.id.spKategorije_detalji);
-        lsvSastojci=(ListView)findViewById(R.id.lsvSastojci_detalji);
+        lsvSastojci=(ListView)findViewById(R.id.lsvsastojci_detalji);
 
 
         String[] kategorije=this.getResources().getStringArray(R.array.kategorije);
