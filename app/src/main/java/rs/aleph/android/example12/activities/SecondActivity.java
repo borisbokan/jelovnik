@@ -38,7 +38,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
 
         // Each lifecycle method should call the method it overrides
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second_linear);
+        setContentView(R.layout.activity_second_relative);
 
         int vrednostPoz=getIntent().getExtras().getInt(FirstActivity.DETALJI_POZ_KEY);
         int vrednostGropuPoz=getIntent().getExtras().getInt(FirstActivity.DETALJI_GROUP_POZ_KEY);

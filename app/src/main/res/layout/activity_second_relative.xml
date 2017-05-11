@@ -1,111 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:elevation="1dp"
+    android:orientation="vertical">
 
 
-    <!--<ListView
-        android:id="@+id/lsvSastojci_detalji"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>-->
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/txtNazivJelo_detalji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="@string/naziv_jela"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:layout_marginTop="17dp"
-        android:layout_alignTop="@+id/slikaJela"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp" />
+        <Spinner
+            android:id="@+id/spKategorije_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:padding="6dp"
+            android:textColor="@android:color/holo_orange_light"
+            tools:listitem="@android:layout/simple_list_item_1"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/txtOpisJelo_detalji"
+            android:layout_alignEnd="@+id/txtOpisJelo_detalji" />
 
-    <ImageView
-        android:id="@+id/slikaJela"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:padding="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/splash"
-        tools:ignore="ContentDescription"
-        android:layout_marginTop="16dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@id/txtNazivJelo_detalji"
-        android:layout_alignStart="@id/txtNazivJelo_detalji" />
+        <TextView
+            android:id="@+id/txtNazivJelo_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/slikaJela"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:elevation="10dp"
+            android:padding="5dp"
+            android:text="@string/naziv_jela"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
 
-    <TextView
-                android:id="@+id/txtOpis_detalji"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-        android:hint="Opis"
-                android:padding="7dp"
-                android:text="@string/opis_jela"
-                android:textSize="18sp"
-                android:textStyle="normal|bold|italic"
-        android:layout_below="@id/txtOpisJelo_detalji"
-        android:layout_alignLeft="@id/spKategorije_detalji"
-        android:layout_alignStart="@id/spKategorije_detalji" />
+        <TextView
+            android:id="@+id/txtCena_detalji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:elevation="10dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="0,00 din"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="36sp"
+            android:textStyle="normal|bold"
+            android:layout_above="@+id/spKategorije_detalji"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
+        <TextView
+            android:id="@+id/txtOpisJelo_detalji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:padding="5dp"
+            android:text="@string/kategorija"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="14sp"
+            android:layout_alignTop="@+id/txtCena_detalji"
+            android:layout_alignLeft="@+id/txtOpis_detalji"
+            android:layout_alignStart="@+id/txtOpis_detalji"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp" />
 
+        <TextView
+            android:id="@+id/txtOpis_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="10dp"
+            android:hint="Opis"
+            android:padding="7dp"
+            android:text="@string/opis_jela"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="18sp"
+            android:textStyle="normal|bold|italic"
+            android:layout_below="@+id/txtNazivJelo_detalji"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/txtNazivJelo_detalji"
+            android:layout_alignStart="@+id/txtNazivJelo_detalji" />
 
-    <TextView
-        android:id="@+id/txtOpisJelo_detalji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/slikaJela"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="21dp"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/splash"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
 
-        android:textColor="@android:color/black"
-        android:padding="5dp"
-        android:text="@string/kategorija"
-        android:textSize="14sp"
-        android:layout_below="@id/slikaJela"
-        android:layout_alignLeft="@id/txtOpis_detalji"
-        android:layout_alignStart="@id/txtOpis_detalji" />
-
-    <TextView
-        android:id="@+id/txtCena_detalji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="0,00 din"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:layout_above="@id/txtOpisJelo_detalji"
-        android:layout_toRightOf="@id/txtOpisJelo_detalji"
-        android:layout_toEndOf="@id/txtOpisJelo_detalji" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnPoruci_detalji"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:text="Poruci jelo"
+        <ListView
+            android:id="@+id/lsvsastojci_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_vertical|center_horizontal" />
+            android:layout_alignEnd="@+id/txtOpisJelo_detalji"
+            android:layout_alignLeft="@+id/txtOpisJelo_detalji"
+            android:layout_alignRight="@+id/txtOpisJelo_detalji"
+            android:layout_alignStart="@+id/txtOpisJelo_detalji"
+            android:padding="7dp"
+            android:textColor="@android:color/holo_orange_light" />
+    </LinearLayout>
 
-    <Spinner
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spKategorije_detalji"
-        android:padding="6dp"
-        android:layout_marginTop="46dp"
-        android:layout_below="@+id/txtOpis_detalji"
-        android:layout_alignLeft="@+id/slikaJela"
-        android:layout_alignStart="@+id/slikaJela" />
+        android:layout_weight="0"
+        android:orientation="horizontal">
 
-    <ListView android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/lsvsastojci_detalji"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/btnPoruci_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Poruci jelo"
+            android:textColor="@android:color/holo_orange_dark" />
+    </LinearLayout>
 
-</RelativeLayout>
+
+</LinearLayout>
