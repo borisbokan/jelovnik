@@ -24,10 +24,6 @@
         </activity>
 
         <!-- Declares 2nd activity -->
-        <activity
-            android:name=".activities.SecondActivity"
-            android:label="@string/detalji_jela">
-        </activity>
 
 
     </application>

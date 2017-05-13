@@ -90,10 +90,11 @@ public class FirstActivity extends Activity {
 		exlvJela.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 			@Override
 			public boolean onChildClick(ExpandableListView expandableListView, View view, int groPos, int position, long l) {
-				Intent intdetalji=new Intent(FirstActivity.this,SecondActivity.class);
+				/*Intent intdetalji=new Intent(FirstActivity.this,SecondActivity.class);
 				intdetalji.putExtra(DETALJI_POZ_KEY,position);
 				intdetalji.putExtra(DETALJI_GROUP_POZ_KEY,groPos);
-				startActivity(intdetalji);
+				startActivity(intdetalji);*/
+				//TODO:Zamenit sa povezivanjem fragmenta (ne Intenta)
 				return false;
 			}
 		});
