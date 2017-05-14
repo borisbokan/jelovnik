@@ -15,7 +15,7 @@
         android:layout_marginTop="2dp"
         android:layout_weight="0"
         android:hint="text"
-        android:padding="3dp"
+        android:paddingLeft="17dp"
         android:text="Naziv jela"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="18sp"
