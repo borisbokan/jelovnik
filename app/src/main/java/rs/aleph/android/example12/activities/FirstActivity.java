@@ -3,10 +3,9 @@ package rs.aleph.android.example12.activities;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-
+import rs.aleph.android.example12.R;
 import fragmenti.DetaljiFragment;
 import fragmenti.ListaFragment;
-import rs.aleph.android.example12.R;
 
 
 public class FirstActivity extends Activity implements ListaFragment.OnItemSelectedListener{
@@ -18,7 +17,6 @@ public class FirstActivity extends Activity implements ListaFragment.OnItemSelec
 	// onCreate method is a lifecycle method called when he activity is starting
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -67,4 +65,19 @@ public class FirstActivity extends Activity implements ListaFragment.OnItemSelec
 			ft.commit();
 		}
 	}
+
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+
+
 }

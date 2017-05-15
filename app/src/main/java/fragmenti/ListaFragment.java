@@ -3,14 +3,17 @@ package fragmenti;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import model.Jelo;
 import model.JelovnikExpandAdapter;
 import model.Kategorija;
@@ -39,6 +42,11 @@ public class ListaFragment extends Fragment {
     private int position;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
         vi=inflater.inflate(R.layout.lista_fragment,container,false);
 
@@ -50,7 +58,7 @@ public class ListaFragment extends Fragment {
 
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         //Iz resursa array
@@ -94,12 +102,15 @@ public class ListaFragment extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groPos, int position, long l) {
                 listener.onItemSelected( groPos,position);
+
+
                return false;
             }
         });
 
 
     }
+
 
 
     private void inicirajPodatke(){
