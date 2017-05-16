@@ -3,6 +3,12 @@ package rs.aleph.android.example12.activities;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+
 import rs.aleph.android.example12.R;
 import fragmenti.DetaljiFragment;
 import fragmenti.ListaFragment;
@@ -13,6 +19,49 @@ public class FirstActivity extends Activity implements ListaFragment.OnItemSelec
 
 	private boolean landscape;
 
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		getMenuInflater().inflate(R.menu.menu,menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()){
+			case R.id.menu_dodaj_jelo:
+
+				Toast.makeText(this, "Kliknuo dodaj jelo", Toast.LENGTH_SHORT).show();
+
+				return super.onOptionsItemSelected(item);
+
+
+			case R.id.menu_prepravi_jelo:
+
+				Toast.makeText(this, "Kliknuo prepravi jelo", Toast.LENGTH_SHORT).show();
+				return super.onOptionsItemSelected(item);
+
+
+			case R.id.menu_obrisi_jelo:
+				Toast.makeText(this, "Kliknuo obrisi jelo", Toast.LENGTH_SHORT).show();
+
+				return super.onOptionsItemSelected(item);
+
+
+
+			default:
+
+				return super.onOptionsItemSelected(item);
+
+
+		}
+
+
+
+
+	}
 
 	// onCreate method is a lifecycle method called when he activity is starting
 	@Override

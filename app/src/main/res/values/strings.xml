@@ -6,4 +6,7 @@
     <string name="kategorija">Kategorija jela</string>
     <string name="opis_jela">Opis jela</string>
     <string name="btn_poruci">Poruci jelo</string>
+    <string name="dodaj_jelo">Dodaj jelo</string>
+    <string name="prepravi_jelo">Prepravi jelo</string>
+    <string name="obrisi_jelo">Obriši jelo</string>
 </resources>
