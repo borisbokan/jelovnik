@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item android:id="@+id/menu_dodaj_jelo" android:title="@string/dodaj_jelo" android:icon="@android:drawable/btn_plus"/>
-    <item android:id="@+id/menu_prepravi_jelo" android:title="@string/prepravi_jelo" android:icon="@drawable/ic_action_pen"/>
-    <item android:id="@+id/menu_obrisi_jelo" android:title="@string/obrisi_jelo" android:icon="@android:drawable/ic_menu_delete"/>
+    <item
+        android:id="@+id/menu_dodaj_jelo"
+        android:title="@string/dodaj_jelo"
+        android:icon="@drawable/ic_dodaj_jelo"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/menu_prepravi_jelo"
+        android:title="@string/prepravi_jelo"
+        android:icon="@drawable/ic_action_pen"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/menu_obrisi_jelo"
+        android:title="@string/obrisi_jelo"
+        android:icon="@android:drawable/ic_menu_delete"
+        app:showAsAction="ifRoom"/>
 
 
 </menu>

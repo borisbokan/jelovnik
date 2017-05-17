@@ -9,4 +9,13 @@
     <string name="dodaj_jelo">Dodaj jelo</string>
     <string name="prepravi_jelo">Prepravi jelo</string>
     <string name="obrisi_jelo">Obriši jelo</string>
+    <string name="podesavanja">Podešavanja</string>
+    <string name="lista_jela">Lista jela</string>
+    <string name="lista_kategorija_jela">Listing kategorija i jela</string>
+    <string name="opis_podesavanja">Podesavanja opcija aplikacije</string>
+    <string name="drawer_otvori">Otvori</string>
+    <string name="drawer_zatvori">Zatvori</string>
+    <string name="fragment_dodaj_jelo">Fragment dodaj jelo</string>
+    <string name="fragment_prepravi_jelo">Fragment prepravi jelo</string>
+    <string name="fragment_obrisi_jelo">Fragment obrisi jelo</string>
 </resources>

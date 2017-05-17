@@ -2,6 +2,7 @@ package fragmenti;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -26,7 +27,6 @@ import rs.aleph.android.example12.R;
 
 public class ListaFragment extends Fragment {
 
-
     private String[] kategorije;
 
     private ArrayList<Jelo> jela;
@@ -38,13 +38,10 @@ public class ListaFragment extends Fragment {
     public ExpandableListView exlvJela;
 
      public OnItemSelectedListener listener;
-    private int groPos;
-    private int position;
+    private int groupPos;
+    private int selPosition;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +51,7 @@ public class ListaFragment extends Fragment {
 
         return vi;
     }
+
 
 
 
@@ -102,7 +100,6 @@ public class ListaFragment extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groPos, int position, long l) {
                 listener.onItemSelected( groPos,position);
-
 
                return false;
             }
@@ -287,6 +284,7 @@ public class ListaFragment extends Fragment {
     public interface OnItemSelectedListener {
 
          void onItemSelected(int group,int position);
+
     }
 
 }

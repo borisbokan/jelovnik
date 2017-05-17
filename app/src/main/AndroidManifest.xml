@@ -11,11 +11,11 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:theme="@android:style/Theme.DeviceDefault.Light">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <!-- Declares 1st (main) activity. Action "MAIN" and category "LAUNCHER" properties makes it visible in the application launcher -->
         <activity
-            android:name=".activities.FirstActivity"
+            android:name="aktivnosti.FirstActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,13 @@
             </intent-filter>
         </activity>
 
-        <!-- Declares 2nd activity -->
+        <!-- Deklarisanje druge aktivnosti tj. Setings Activity -->
+        <activity android:name="aktivnosti.PodesavanjaActivty"
+            android:label="@string/podesavanja"
+            android:parentActivityName="aktivnosti.FirstActivity">
+
+
+        </activity>
 
 
     </application>

@@ -69,8 +69,9 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putInt("position", position);
-        outState.putInt("groPos",groPos);
+
+        outState.putInt("groPos", position);
+        outState.putInt("selPos",groPos);
     }
 
     @Override
@@ -79,7 +80,7 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
 
         if (savedInstanceState != null) {
             this.groPos=savedInstanceState.getInt("groPos",0);
-            this.position = savedInstanceState.getInt("position", 0);
+            this.position = savedInstanceState.getInt("selPos", 0);
         }
 
         selJelo=(Jelo)ListaFragment.expAdapterJelovnik.getChild(this.groPos,this.position);
@@ -167,4 +168,7 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         this.position=position;
         updateContent(group,position);
     }
+
+
+
 }
