@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,8 +57,6 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         txvKategorija=(TextView)vi.findViewById(R.id.txtOpisJelo_detalji);
         txvOpis=(TextView)vi.findViewById(R.id.txtOpis_detalji);
         txvCena=(TextView)vi.findViewById(R.id.txtCena_detalji);
-        btnPoruci=(Button)vi.findViewById(R.id.btnPoruci_detalji);
-        spkategorije=(Spinner)vi.findViewById(R.id.spKategorije_detalji);
         lsvSastojci=(ListView)vi.findViewById(R.id.lsvsastojci_detalji);
 
 
@@ -108,6 +107,8 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         txvCena.setText(cena + " din");
 
 
+            FloatingActionButton fabDodaj=(FloatingActionButton)getView().findViewById(R.id.fabDodaja_detalji);
+            fabDodaj.setOnClickListener(this);
 
          }
 
@@ -154,7 +155,7 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
 
         switch (view.getId()){
 
-            case R.id.btnPoruci_detalji:
+            case R.id.fabDodaja_detalji:
                 Toast.makeText(getActivity(),"Kliknuo poruci jelo..",Toast.LENGTH_SHORT).show();
                 break;
 

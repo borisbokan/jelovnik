@@ -9,62 +9,80 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/slikaJela"
-            android:layout_width="161dp"
-            android:layout_height="159dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:padding="4dp"
             android:scaleType="centerCrop"
             android:src="@drawable/splash" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/txtNazivJelo_detalji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.84"
-            android:orientation="vertical">
+            android:layout_alignLeft="@+id/slikaJela"
+            android:layout_alignStart="@+id/slikaJela"
+            android:layout_alignTop="@+id/slikaJela"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/naziv_jela"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/txtNazivJelo_detalji"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="@string/naziv_jela"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/txtOpisJelo_detalji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/kategorija"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="11dp"
+            android:layout_below="@+id/txtNazivJelo_detalji"
+            android:layout_alignLeft="@+id/txtNazivJelo_detalji"
+            android:layout_alignStart="@+id/txtNazivJelo_detalji" />
 
-            <TextView
-                android:id="@+id/txtOpisJelo_detalji"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="@string/kategorija"
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
+        <TextView
+            android:id="@+id/txtCena_detalji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="0,00 din"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:layout_alignBottom="@+id/slikaJela"
+            android:layout_alignLeft="@+id/txtOpis_detalji"
+            android:layout_alignStart="@+id/txtOpis_detalji"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginBottom="30dp" />
 
-            <TextView
-                android:id="@+id/txtCena_detalji"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="0,00 din"
-                android:textAlignment="center"
-                android:textSize="24sp" />
+        <TextView
+            android:id="@+id/txtOpis_detalji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Opis"
+            android:padding="7dp"
+            android:text="@string/opis_jela"
+            android:textSize="18sp"
+            android:textStyle="normal|bold|italic"
+            android:layout_below="@+id/txtOpisJelo_detalji"
+            android:layout_alignLeft="@+id/txtOpisJelo_detalji"
+            android:layout_alignStart="@+id/txtOpisJelo_detalji" />
 
-        </LinearLayout>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 
     <LinearLayout
@@ -81,29 +99,10 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <Spinner
-            android:id="@+id/spKategorije_detalji"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:layout_weight="1"
-            android:padding="6dp" />
-
-        <TextView
-            android:id="@+id/txtOpis_detalji"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:layout_weight="1"
-            android:hint="Opis"
-            android:padding="7dp"
-            android:text="@string/opis_jela"
-            android:textSize="18sp"
-            android:textStyle="normal|bold|italic" />
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fabDodaja_detalji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
