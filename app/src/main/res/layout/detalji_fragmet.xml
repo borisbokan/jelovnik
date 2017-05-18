@@ -1,103 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-
-    android:orientation="vertical"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <ImageView
             android:id="@+id/slikaJela"
+            android:layout_width="161dp"
+            android:layout_height="159dp"
             android:layout_margin="4dp"
             android:padding="4dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/splash"
-            tools:ignore="ContentDescription"
-            android:layout_width="161dp"
-            android:layout_height="159dp" />
+            android:src="@drawable/splash" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.84">
+            android:layout_weight="0.84"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtNazivJelo_detalji"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
+                android:layout_weight="1"
                 android:padding="5dp"
                 android:text="@string/naziv_jela"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
-                tools:ignore="HardcodedText,NestedWeights"
-                android:layout_weight="1" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/txtOpisJelo_detalji"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
-                android:textColor="@android:color/black"
+                android:layout_weight="1"
                 android:padding="5dp"
                 android:text="@string/kategorija"
-                android:textSize="14sp"
-                android:layout_weight="1" />
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/txtCena_detalji"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="0,00 din"
                 android:textAlignment="center"
-                android:textSize="24sp"
-                tools:ignore="HardcodedText"
-                android:layout_weight="1" />
+                android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/btnPoruci_detalji"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Poruci jelo"
-
-                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/txtOpis_detalji"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:hint="Opis"
-        android:padding="7dp"
-        android:text="@string/opis_jela"
-        android:textSize="18sp"
-        android:textStyle="normal|bold|italic"
-        tools:ignore="HardcodedText" />
+        android:layout_height="0dp"
 
-    <Spinner
-        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/lsvsastojci_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Spinner
+            android:id="@+id/spKategorije_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:layout_weight="1"
+            android:padding="6dp" />
+
+        <TextView
+            android:id="@+id/txtOpis_detalji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:hint="Opis"
+            android:padding="7dp"
+            android:text="@string/opis_jela"
+            android:textSize="18sp"
+            android:textStyle="normal|bold|italic" />
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spKategorije_detalji"
+        android:layout_gravity="bottom|end"
         android:layout_margin="7dp"
-        android:padding="6dp" />
+        android:clickable="true"
+        android:padding="5dp"
+        android:src="@mipmap/ic_plus2"
+        app:fabSize="mini" />
 
-    <ListView android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/lsvsastojci_detalji"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
