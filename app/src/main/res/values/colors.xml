@@ -7,9 +7,11 @@
 
     <!-- namenske boje -->
     <color name="transparentna_crna_1">@android:color/transparent</color>
-    <color name="primary">#607d8b</color>
+    <color name="primary">#66777f</color>
+    <color name="navig_bar">#41809b</color>
+    
     <color name="cena_boja">#f9a825</color>
     <color name="naziv_jela_boja">#34515e</color>
-    <color name="kateg_jela_boja">#607d8b</color>
+    <color name="kateg_jela_boja">#8cd0f7</color>
     <color name="opis_jela_boja">#8eacbb</color>
 </resources>

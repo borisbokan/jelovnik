@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="mojaTema" parent="android:Theme.Material" >
+    <style name="mojaTema" parent="Theme.AppCompat.Light.NoActionBar" >
         <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:navigationBarColor">@color/navig_bar</item>
+        <item name="colorPrimaryDark">@color/navig_bar</item>
+        <item name="colorPrimary">@color/kateg_jela_boja</item>
+        <item name="android:statusBarColor">?attr/colorControlHighlight</item>
     </style>
 
     <style name="mojaTema.cena">
@@ -52,4 +56,5 @@
         </style>
 
 
-    </resources>
+
+</resources>

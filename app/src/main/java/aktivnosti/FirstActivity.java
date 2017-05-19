@@ -194,13 +194,13 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.menu_dodaj_jelo:
-				Toast.makeText(this, "Action " + getString(R.string.fragment_dodaj_jelo) , Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Kliknuo na  " + getString(R.string.fragment_dodaj_jelo) , Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.menu_prepravi_jelo:
-				Toast.makeText(this, "Action " + getString(R.string.fragment_prepravi_jelo), Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Kliknuo na  " +  getString(R.string.fragment_prepravi_jelo), Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.menu_obrisi_jelo:
-				Toast.makeText(this, "Action " + getString(R.string.fragment_obrisi_jelo) , Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Kliknuo na  " + getString(R.string.fragment_obrisi_jelo) , Toast.LENGTH_SHORT).show();
 				break;
 		}
 
