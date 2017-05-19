@@ -1,5 +1,6 @@
 package fragmenti;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -107,6 +108,7 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         txvCena.setText(cena + " din");
 
 
+
             FloatingActionButton fabDodaj=(FloatingActionButton)getView().findViewById(R.id.fabDodaja_detalji);
             fabDodaj.setOnClickListener(this);
 
@@ -115,7 +117,7 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
 
 
     public void setContent(final int _groPos,final int _position) {
-       this.groPos=_groPos;
+        this.groPos=_groPos;
         this.position=_position;
 
     }
@@ -146,6 +148,10 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         txvOpis.setText(selJelo.getOpis());
         txvKategorija.setText(selJelo.getKategorija().getNaziv());
         txvCena.setText(cena + " din");
+
+
+
+        getActivity().getActionBar().setTitle(selJelo.getNaziv());
     }
 
 
@@ -161,6 +167,7 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
 
         }
     }
+
 
 
     @Override

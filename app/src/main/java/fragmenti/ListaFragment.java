@@ -1,5 +1,6 @@
 package fragmenti;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -49,6 +50,7 @@ public class ListaFragment extends Fragment {
 
         exlvJela=(ExpandableListView)vi.findViewById(R.id.exlvJela);
 
+
         return vi;
     }
 
@@ -93,6 +95,7 @@ public class ListaFragment extends Fragment {
             @Override
             public void onGroupCollapse(int i) {
                 Toast.makeText(getActivity(),"Zatvori grupu",Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -101,7 +104,7 @@ public class ListaFragment extends Fragment {
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groPos, int position, long l) {
                 listener.onItemSelected( groPos,position);
 
-               return false;
+                return false;
             }
         });
 

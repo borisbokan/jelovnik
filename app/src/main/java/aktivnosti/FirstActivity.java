@@ -53,6 +53,8 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+		actionBar.setIcon(R.mipmap.ic_launcher);
+		actionBar.setTitle(R.string.app_name);
 
 		if (actionBar != null) {
 			actionBar.setDisplayHomeAsUpEnabled(true);
@@ -89,7 +91,7 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 			@Override
 			public void onDrawerClosed(View drawerView) {
 
-				getSupportActionBar().setTitle(drawerTitle);
+				getSupportActionBar().setTitle(R.string.app_name);
 				invalidateOptionsMenu();        // Creates call to onPrepareOptionsMenu()
 			}
 		};
@@ -178,7 +180,6 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		}
 
 		drawerList.setItemChecked(i, true);
-		setTitle(stavkeDrawera.get(i).getNaslov());
 		drawerLayout.closeDrawer(drawerPane);
 	}
 
