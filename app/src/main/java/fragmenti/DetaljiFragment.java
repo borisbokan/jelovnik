@@ -150,8 +150,6 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         txvCena.setText(cena + " din");
 
 
-
-        getActivity().getActionBar().setTitle(selJelo.getNaziv());
     }
 
 
