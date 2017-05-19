@@ -24,7 +24,7 @@
             <item name="android:textSize">29dp</item>
             <item name="android:textStyle">bold|italic</item>
             <item name="android:textColor">@color/naziv_jela_boja</item>
-            <item name="android:background">@color/bela</item>
+            <item name="android:background">@color/transparentna</item>
             <item name="android:gravity">center</item>
             <item name="android:padding">5dp</item>
             <item name="android:text">0,00 din"</item>
