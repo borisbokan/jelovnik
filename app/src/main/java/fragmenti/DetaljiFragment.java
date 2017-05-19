@@ -54,7 +54,7 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
 
         imgSlika=(ImageView)vi.findViewById(R.id.slikaJela);
         txvNaziv=(TextView)vi.findViewById(R.id.txtNazivJelo_detalji);
-        txvKategorija=(TextView)vi.findViewById(R.id.txtOpisJelo_detalji);
+        txvKategorija=(TextView)vi.findViewById(R.id.txtKategJela_detalji);
         txvOpis=(TextView)vi.findViewById(R.id.txtOpis_detalji);
         txvCena=(TextView)vi.findViewById(R.id.txtCena_detalji);
         lsvSastojci=(ListView)vi.findViewById(R.id.lsvsastojci_detalji);

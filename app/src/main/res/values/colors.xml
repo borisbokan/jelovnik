@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_material_dark_1">@android:color/transparent</color>
+
+    <!-- Osnovne boje -->
+    <color name="bela">#FFFFFF</color>
+    <color name="crna">#000000</color>
+
+    <!-- namenske boje -->
+    <color name="transparentna_crna_1">@android:color/transparent</color>
+    <color name="primary">#607d8b</color>
+    <color name="cena_boja">#f9a825</color>
+    <color name="naziv_jela_boja">#34515e</color>
+    <color name="kateg_jela_boja">#607d8b</color>
+    <color name="opis_jela_boja">#8eacbb</color>
 </resources>

@@ -2,6 +2,54 @@
 <resources>
 
     <style name="mojaTema" parent="android:Theme.Material" >
-        <item name="android:colorPrimary">@color/primary_material_dark_1</item>
+        <item name="android:colorPrimary">@color/primary</item>
     </style>
-</resources>
+
+    <style name="mojaTema.cena">
+        <item name="android:textSize">38dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/cena_boja</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:text">0,00 din"</item>
+        <item name="android:textAlignment">center</item>
+
+    </style>
+
+        <style name="mojaTema.naziv_jela">
+            <item name="android:textSize">29dp</item>
+            <item name="android:textStyle">bold|italic</item>
+            <item name="android:textColor">@color/naziv_jela_boja</item>
+            <item name="android:background">@color/bela</item>
+            <item name="android:gravity">center</item>
+            <item name="android:padding">5dp</item>
+            <item name="android:text">0,00 din"</item>
+            <item name="android:textAlignment">center</item>
+        </style>
+
+        <style name="mojaTema.kategorija_jela">
+            <item name="android:textSize">17dp</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textColor">@color/kateg_jela_boja</item>
+            <item name="android:gravity">center</item>
+            <item name="android:paddingLeft">15dp</item>
+            <item name="android:paddingTop">5dp</item>
+            <item name="android:paddingBottom">5dp</item>
+            <item name="android:text">0,00 din"</item>
+            <item name="android:textAlignment">center</item>
+        </style>
+
+        <style name="mojaTema.opis_jela">
+            <item name="android:textSize">14dp</item>
+            <item name="android:textStyle">italic|normal</item>
+            <item name="android:textColor">@color/opis_jela_boja</item>
+            <item name="android:gravity">center</item>
+            <item name="android:paddingLeft">15dp</item>
+            <item name="android:paddingTop">5dp</item>
+            <item name="android:paddingBottom">5dp</item>
+            <item name="android:text">0,00 din"</item>
+            <item name="android:textAlignment">center</item>
+        </style>
+
+
+    </resources>

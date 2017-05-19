@@ -17,40 +17,39 @@
             android:id="@+id/slikaJela"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="4dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
             android:padding="4dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/splash" />
+            android:src="@android:drawable/title_bar" />
 
         <TextView
             android:id="@+id/txtNazivJelo_detalji"
-            android:layout_width="wrap_content"
+            style="@style/mojaTema.naziv_jela"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/slikaJela"
             android:layout_alignStart="@+id/slikaJela"
             android:layout_alignTop="@+id/slikaJela"
+            android:layout_marginEnd="13dp"
             android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
             android:layout_marginStart="13dp"
             android:layout_marginTop="15dp"
-            android:layout_weight="1"
             android:padding="5dp"
-            android:text="@string/naziv_jela"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:text="@string/naziv_jela" />
 
         <TextView
-            android:id="@+id/txtOpisJelo_detalji"
+            android:id="@+id/txtKategJela_detalji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="5dp"
             android:text="@string/kategorija"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:layout_marginTop="11dp"
             android:layout_below="@+id/txtNazivJelo_detalji"
-            android:layout_alignLeft="@+id/txtNazivJelo_detalji"
-            android:layout_alignStart="@+id/txtNazivJelo_detalji" />
+            android:layout_alignStart="@+id/txtNazivJelo_detalji"
+            style="@style/mojaTema.kategorija_jela"/>
 
         <TextView
             android:id="@+id/txtCena_detalji"
@@ -60,13 +59,13 @@
             android:padding="5dp"
             android:text="0,00 din"
             android:textAlignment="center"
-            android:textSize="24sp"
             android:layout_alignBottom="@+id/slikaJela"
             android:layout_alignLeft="@+id/txtOpis_detalji"
             android:layout_alignStart="@+id/txtOpis_detalji"
             android:layout_marginLeft="21dp"
             android:layout_marginStart="21dp"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginBottom="30dp"
+            style="@style/mojaTema.cena"/>
 
         <TextView
             android:id="@+id/txtOpis_detalji"
@@ -78,9 +77,10 @@
             android:text="@string/opis_jela"
             android:textSize="18sp"
             android:textStyle="normal|bold|italic"
-            android:layout_below="@+id/txtOpisJelo_detalji"
-            android:layout_alignLeft="@+id/txtOpisJelo_detalji"
-            android:layout_alignStart="@+id/txtOpisJelo_detalji" />
+            android:layout_below="@+id/txtKategJela_detalji"
+            android:layout_alignLeft="@+id/txtKategJela_detalji"
+            android:layout_alignStart="@+id/txtKategJela_detalji"
+            style="@style/mojaTema.opis_jela"/>
 
     </RelativeLayout>
 
@@ -106,10 +106,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="7dp"
+        android:layout_margin="15dp"
         android:clickable="true"
         android:padding="5dp"
-        android:src="@mipmap/ic_plus2"
-        app:fabSize="mini" />
+        android:src="@mipmap/ic_korpa"
+        app:backgroundTint="@color/cena_boja" />
 
 </android.support.design.widget.CoordinatorLayout>
