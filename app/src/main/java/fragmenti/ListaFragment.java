@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -60,6 +61,7 @@ public class ListaFragment extends Fragment {
     @Override
     public void onActivityCreated(final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
         //Iz resursa array
         kategorije=getResources().getStringArray(R.array.kategorije);
@@ -275,6 +277,7 @@ public class ListaFragment extends Fragment {
         super.onAttach(activity);
 
 
+
         try {
             listener = (OnItemSelectedListener) activity;
         } catch (ClassCastException e) {
@@ -289,5 +292,7 @@ public class ListaFragment extends Fragment {
          void onItemSelected(int group,int position);
 
     }
+
+
 
 }

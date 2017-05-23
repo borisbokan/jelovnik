@@ -1,5 +1,6 @@
 package aktivnosti;
 
+
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -162,6 +163,9 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		switch (i){
 			case 0:
 
+
+
+
 				FragmentTransaction ft = getFragmentManager().beginTransaction();
 				ListaFragment listaFragment= new ListaFragment();
 				ft.replace(R.id.exlist_fragment, listaFragment, "lista_fragment_3");
@@ -195,6 +199,7 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.menu_dodaj_jelo:
+
 				Toast.makeText(this, "Kliknuo na  " + getString(R.string.fragment_dodaj_jelo) , Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.menu_prepravi_jelo:
@@ -236,5 +241,7 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		// Pass any configuration change to the drawer toggle
 		drawerToggle.onConfigurationChanged(configuration);
 	}
+
+
 
 }
