@@ -21,6 +21,7 @@ import model.Jelo;
 import model.JelovnikExpandAdapter;
 import model.Kategorija;
 import model.Sastojak;
+import myAsyncTask.UcitavanjeListeJelaAsy;
 import rs.aleph.android.example12.R;
 
 /**
@@ -62,7 +63,7 @@ public class ListaFragment extends Fragment {
     public void onActivityCreated(final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
+        new UcitavanjeListeJelaAsy(getActivity()).execute();
         //Iz resursa array
         kategorije=getResources().getStringArray(R.array.kategorije);
         //Stavljam u kolekciju generickog tipa, kategorija.
