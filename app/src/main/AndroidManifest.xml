@@ -32,6 +32,13 @@
 
         </activity>
 
+        <activity android:name="aktivnosti.UnosIspravkaJela"
+            android:label="@string/podesavanja"
+            android:parentActivityName="aktivnosti.FirstActivity">
+
+
+        </activity>
+
 
     </application>
 
