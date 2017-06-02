@@ -23,7 +23,7 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
     private static final int DB_VER=1;
 
 
-    public MyDbHelp(Context context, String databaseName, int databaseVersion) {
+    public MyDbHelp(Context context) {
 
         super(context, DBNAME, null,DB_VER);
     }

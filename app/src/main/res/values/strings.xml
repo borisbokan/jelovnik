@@ -18,4 +18,5 @@
     <string name="fragment_dodaj_jelo">Fragment dodaj jelo</string>
     <string name="fragment_prepravi_jelo">Fragment prepravi jelo</string>
     <string name="fragment_obrisi_jelo">Fragment obrisi jelo</string>
+    <string name="ok">Ok</string>
 </resources>

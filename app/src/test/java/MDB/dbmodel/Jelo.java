@@ -15,30 +15,30 @@ import model.Sastojak;
 public class Jelo {
 
     public static final String tJELO_tNaziv="tJELO";
-    private static final String tJELO_id ="id";
-    private static final String tJELO_slika="slika";
-    private static final String tJELO_naziv="naziv";
-    private static final String tJELO_opis="opis";
-    private static final String tJELO_cena="cena";
-    private static final String tJELO_kolicina="kolicina";
+    public static final String tJELO_id ="id";
+    public static final String tJELO_slika="slika";
+    public static final String tJELO_naziv="naziv";
+    public static final String tJELO_opis="opis";
+    public static final String tJELO_cena="cena";
+    public static final String tJELO_kolicina="kolicina";
 
 
 
     @DatabaseField(columnName = tJELO_id)
-    private int id;
+    public int id;
     @DatabaseField(columnName = tJELO_slika)
-    private String slika;
+    public String slika;
     @DatabaseField(columnName = tJELO_naziv)
-    private String naziv;
+    public String naziv;
     @DatabaseField(columnName = tJELO_opis)
-    private String opis;
+    public String opis;
     @DatabaseField(columnName = tJELO_cena)
-    private double cena;
+    public double cena;
     @DatabaseField(columnName = tJELO_kolicina)
-    private float kolicina;
+    public float kolicina;
 
     @DatabaseField(foreign = true,foreignAutoRefresh = true)
-    private Kategorija kateg;
+    public Kategorija kateg;
 
 
     public Jelo(){

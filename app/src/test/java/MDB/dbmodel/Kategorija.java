@@ -20,8 +20,8 @@ import javax.print.attribute.standard.MediaSize;
 public class Kategorija {
 
     public static final String tKATEGORIJA="Kategorija";
-    private static final String tKATEGORIJA_ID="id";
-    private static final String tKATEGORIJA_naziv="naziv";
+    public static final String tKATEGORIJA_ID="id";
+    public static final String tKATEGORIJA_naziv="naziv";
 
     @DatabaseField(columnName=tKATEGORIJA_ID,generatedId = true)
     int id;
