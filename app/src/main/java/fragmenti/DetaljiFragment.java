@@ -1,10 +1,8 @@
 package fragmenti;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +20,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import model.Jelo;
 import model.Sastojak;
-import rs.aleph.android.example12.R;
+import rs.aleph.android.jelovnik.R;
 
 
 /**

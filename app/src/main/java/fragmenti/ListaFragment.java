@@ -1,11 +1,8 @@
 package fragmenti;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +17,7 @@ import model.Jelo;
 import model.JelovnikExpandAdapter;
 import model.Kategorija;
 import model.Sastojak;
-import rs.aleph.android.example12.R;
+import rs.aleph.android.jelovnik.R;
 
 /**
  * Created by borcha on 13.05.17..

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- In principle, each app should have unique package -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="rs.aleph.android.example12">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="rs.aleph.android.jelovnik">
 
     <!-- Declares that the app needs a permission to access internet -->
     <uses-permission android:name="android.permission.INTERNET"/>

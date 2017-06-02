@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
-import rs.aleph.android.example12.R;
+import rs.aleph.android.jelovnik.R;
 
 /**
  * Created by borcha on 08.05.17..

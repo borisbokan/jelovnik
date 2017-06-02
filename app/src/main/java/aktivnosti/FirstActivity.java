@@ -20,7 +20,7 @@ import adapteri.DrawMeniAdapter;
 import model.NavigacioniMeni;
 import fragmenti.DetaljiFragment;
 import fragmenti.ListaFragment;
-import rs.aleph.android.example12.R;
+import rs.aleph.android.jelovnik.R;
 
 
 public class FirstActivity extends AppCompatActivity implements ListaFragment.OnItemSelectedListener, AdapterView.OnItemClickListener {

@@ -1,4 +1,4 @@
-package rs.aleph.android.example12;
+package rs.aleph.android.jelovnik;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
