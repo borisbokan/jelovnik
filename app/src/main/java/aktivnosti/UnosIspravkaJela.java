@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import mdb.MySqlJelo;
@@ -71,8 +72,13 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
         try {
             myDbKate = new MySqlKategorija(this);
             List<Kategorija> lsKate=myDbKate.getSveKategorije();
+            List<String> stavkeKategorije=new ArrayList<>();
 
-            ArrayAdapter<Kategorija> adKatego=new ArrayAdapter<Kategorija>(this,android.R.layout.simple_spinner_dropdown_item,lsKate);
+            for (Kategorija stavka : lsKate) {
+                stavkeKategorije.add(stavka.getNaziv());
+            }
+
+            ArrayAdapter<String> adKatego=new ArrayAdapter<String>(this,R.layout.stavka_kategorije,stavkeKategorije);
             spKategorije.setAdapter(adKatego);
 
         } catch (SQLException e) {
@@ -83,7 +89,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
         btnOdustajem.setOnClickListener(this);
         btnSnimi.setOnClickListener(this);
-
+        imgbDodajSliku.setOnClickListener(this);
 
 
     }

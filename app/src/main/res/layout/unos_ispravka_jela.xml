@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="2dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
@@ -157,19 +157,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="0"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnOdustajem_UnIsJela"
+                style="@style/mojaTema.buttons"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:padding="3dp"
-                android:text="Button" />
+                android:text="@string/odustajem" />
 
             <Button
                 android:id="@+id/btnSnimi_UnIsJela"
@@ -178,7 +178,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:padding="3dp"
-                android:text="Button" />
+                android:text="@string/snimi" style="@style/mojaTema.buttons"/>
         </LinearLayout>
 
     </LinearLayout>

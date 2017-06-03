@@ -15,8 +15,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import adapteri.DrawMeniAdapter;
+import mdb.MySqlKategorija;
+import mdb.dbmodel.Kategorija;
 import model.NavigacioniMeni;
 import fragmenti.DetaljiFragment;
 import fragmenti.ListaFragment;
@@ -48,6 +52,19 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		try {
+			 Kategorija kat1=new Kategorija("Rostilj");
+			 Kategorija kat2=new Kategorija("Kuvana jela");
+
+			MySqlKategorija kat=new MySqlKategorija(this);
+			kat.snimiNovuKategoriju(kat1);
+
+			MySqlKategorija mkat2=new MySqlKategorija(this);
+			mkat2.snimiNovuKategoriju(kat2);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

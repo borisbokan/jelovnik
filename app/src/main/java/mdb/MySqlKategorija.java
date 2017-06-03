@@ -62,6 +62,7 @@ public class MySqlKategorija {
         this.daoKategorija= DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
         this.daoJelo= DaoManager.createDao(dbHelp.getConnectionSource(),Jelo.class);
 
+
     }
 
     /**
@@ -119,11 +120,11 @@ public class MySqlKategorija {
      * Unos novog jela
      * @param _kategorija
      */
-    public void snimiNovuKategoriju(Jelo _kategorija) throws SQLException{
+    public void snimiNovuKategoriju(Kategorija _kategorija) throws SQLException{
 
         if(!_kategorija.equals(null)){
             //TODO. Uraditi Sql upit za delete
-            int rez=daoKategorija.create(this.kategorija);
+            int rez=daoKategorija.create(_kategorija);
             SnimiNovuKategoriju.OnSnimiNovuKategoriju(rez);
             this.dbHelp.close();
 

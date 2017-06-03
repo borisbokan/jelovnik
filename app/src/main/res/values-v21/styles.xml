@@ -56,6 +56,14 @@
             <item name="android:textAlignment">center</item>
         </style>
 
+    <style name="mojaTema.buttons">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textStyle">italic|normal</item>
+        <item name="android:textColor">@color/bela</item>
+        <item name="android:background">@color/cena_boja</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 
 
 </resources>
