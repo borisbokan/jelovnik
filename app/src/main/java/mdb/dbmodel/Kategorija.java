@@ -1,16 +1,9 @@
-package MDB.dbmodel;
+package mdb.dbmodel;
 
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.stmt.query.In;
 import com.j256.ormlite.table.DatabaseTable;
 
-import java.util.ArrayList;
-import java.util.jar.Attributes;
-
-import javax.print.attribute.standard.MediaSize;
 
 /**
  * Created by borcha on 07.05.17..

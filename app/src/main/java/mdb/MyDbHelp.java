@@ -1,8 +1,7 @@
-package MDB;
+package mdb;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
@@ -10,8 +9,8 @@ import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
 
-import MDB.dbmodel.Jelo;
-import MDB.dbmodel.Kategorija;
+import mdb.dbmodel.Jelo;
+import mdb.dbmodel.Kategorija;
 
 /**
  * Created by borcha on 02.06.17..

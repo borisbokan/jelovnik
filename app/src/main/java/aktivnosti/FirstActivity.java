@@ -196,6 +196,11 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		switch (item.getItemId()) {
 			case R.id.menu_dodaj_jelo:
 				Toast.makeText(this, "Kliknuo na  " + getString(R.string.fragment_dodaj_jelo) , Toast.LENGTH_SHORT).show();
+				Intent iNovoJelo=new Intent(this,UnosIspravkaJela.class);
+				iNovoJelo.putExtra("tip_ope", UnosIspravkaJela.TIP_OPERACIJE_NOVO);
+				startActivity(iNovoJelo);
+
+
 				break;
 			case R.id.menu_prepravi_jelo:
 				Toast.makeText(this, "Kliknuo na  " +  getString(R.string.fragment_prepravi_jelo), Toast.LENGTH_SHORT).show();

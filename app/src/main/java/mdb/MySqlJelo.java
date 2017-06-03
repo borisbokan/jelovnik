@@ -1,7 +1,6 @@
-package MDB;
+package mdb;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
@@ -11,9 +10,8 @@ import com.j256.ormlite.stmt.Where;
 import java.sql.SQLException;
 import java.util.List;
 
-import MDB.MyAsyncData.asytPrepraviJelo;
-import MDB.dbmodel.Jelo;
-import MDB.dbmodel.Kategorija;
+import mdb.dbmodel.Jelo;
+import mdb.dbmodel.Kategorija;
 import pomocne.infoPoruka;
 
 /**
@@ -51,15 +49,14 @@ public class MySqlJelo {
 
     }
 
+
     /**
      * Konstruktor za unos. Nap. Ukoliko je sa Id-om ima moguce dodatne operacije kao sto su: <br> Update ili Delete.
      * @param _cont
-     * @param _jelo
      */
-    public MySqlJelo(Context _cont, Jelo _jelo) throws SQLException {
+    public MySqlJelo(Context _cont) throws SQLException {
         dbHelp=new MyDbHelp(_cont);
         this.cont=_cont;
-        this.jelo=_jelo;
         this.daoKategorija= DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
         this.daoJelo= DaoManager.createDao(dbHelp.getConnectionSource(),Jelo.class);
 
@@ -69,12 +66,10 @@ public class MySqlJelo {
     /**
      * Konstruktor sa Id-om je ukoliko saljemo u cilju update ili brisanja podatka.
      * @param _cont
-     * @param _jelo
      * @param _id
      */
-    public MySqlJelo(Context _cont, Jelo _jelo, int _id) throws SQLException {
+    public MySqlJelo(Context _cont, int _id) throws SQLException {
         this.cont=_cont;
-        this.jelo=_jelo;
         this.id=_id;
         this.daoKategorija= DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
         this.daoJelo= DaoManager.createDao(dbHelp.getConnectionSource(),Jelo.class);

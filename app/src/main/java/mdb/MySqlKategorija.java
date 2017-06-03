@@ -1,4 +1,4 @@
-package MDB.MyAsyncData;
+package mdb;
 
 import android.content.Context;
 
@@ -10,9 +10,9 @@ import com.j256.ormlite.stmt.Where;
 import java.sql.SQLException;
 import java.util.List;
 
-import MDB.MyDbHelp;
-import MDB.dbmodel.Jelo;
-import MDB.dbmodel.Kategorija;
+import mdb.MyDbHelp;
+import mdb.dbmodel.Jelo;
+import mdb.dbmodel.Kategorija;
 import pomocne.infoPoruka;
 
 /**
@@ -53,12 +53,12 @@ public class MySqlKategorija {
     /**
      * Konstruktor za unos. Nap. Ukoliko je sa Id-om ima moguce dodatne operacije kao sto su: <br> Update ili Delete.
      * @param _cont
-     * @param _kategorija
+
      */
-    public MySqlKategorija(Context _cont, Kategorija _kategorija) throws SQLException {
+    public MySqlKategorija(Context _cont) throws SQLException {
         dbHelp=new MyDbHelp(_cont);
         this.cont=_cont;
-        this.kategorija=_kategorija;
+
         this.daoKategorija= DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
         this.daoJelo= DaoManager.createDao(dbHelp.getConnectionSource(),Jelo.class);
 
@@ -67,12 +67,11 @@ public class MySqlKategorija {
     /**
      * Konstruktor sa Id-om je ukoliko saljemo u cilju update ili brisanja podatka.
      * @param _cont
-     * @param _kategorija
+
      * @param _id
      */
-    public MySqlKategorija(Context _cont, Kategorija _kategorija, int _id) throws SQLException {
+    public MySqlKategorija(Context _cont, int _id) throws SQLException {
         this.cont=_cont;
-        this.kategorija=_kategorija;
         this.id=_id;
         this.daoKategorija= DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
         this.daoJelo= DaoManager.createDao(dbHelp.getConnectionSource(),Jelo.class);
@@ -138,7 +137,7 @@ public class MySqlKategorija {
 
 
     //Vraca listu svih objekata Jelo
-    private List<Kategorija> getSveKategorije() throws SQLException {
+    public List<Kategorija> getSveKategorije() throws SQLException {
         return daoKategorija.queryForAll();
     }
 

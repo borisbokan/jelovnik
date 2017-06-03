@@ -1,12 +1,7 @@
-package MDB.dbmodel;
+package mdb.dbmodel;
 
 import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
-
-import java.util.ArrayList;
-
-import model.Sastojak;
 
 /**
  * Created by borcha on 07.05.17..
@@ -27,7 +22,7 @@ public class Jelo {
     @DatabaseField(columnName = tJELO_id)
     public int id;
     @DatabaseField(columnName = tJELO_slika)
-    public String slika;
+    public byte[] slika;
     @DatabaseField(columnName = tJELO_naziv)
     public String naziv;
     @DatabaseField(columnName = tJELO_opis)
@@ -54,7 +49,7 @@ public class Jelo {
      * @param _cena
      * @param _kolicina
      */
-    public Jelo(String _slika,String _naziv, String _opis, Double _cena,float _kolicina){
+    public Jelo(byte[] _slika,String _naziv, String _opis, Double _cena,float _kolicina){
 
         this.slika=_slika;
         this.naziv=_naziv;
@@ -73,11 +68,11 @@ public class Jelo {
         this.id = id;
     }
 
-    public String getSlika() {
+    public byte[] getSlika() {
         return slika;
     }
 
-    public void setSlika(String slika) {
+    public void setSlika(byte[] slika) {
         this.slika = slika;
     }
 

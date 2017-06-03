@@ -5,7 +5,7 @@ android {
     buildToolsVersion '25.0.0'
 
     defaultConfig {
-        applicationId "rs.aleph.android.example12"
+        applicationId "rs.aleph.android.jelovnik"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1

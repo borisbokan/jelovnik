@@ -1,8 +1,8 @@
-package MDB.MyAsyncData;
+package MyAsyncData;
 
 import android.os.AsyncTask;
 
-import MDB.dbmodel.Jelo;
+import mdb.dbmodel.Jelo;
 
 /**
  * Created by borcha on 02.06.17..

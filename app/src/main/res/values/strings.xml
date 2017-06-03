@@ -19,4 +19,7 @@
     <string name="fragment_prepravi_jelo">Fragment prepravi jelo</string>
     <string name="fragment_obrisi_jelo">Fragment obrisi jelo</string>
     <string name="ok">Ok</string>
+    <string name="unesi_opis_jela">Unesi opis jela</string>
+    <string name="cena_jela">Cena jela</string>
+    <string name="unesi_naziv_jela">Unesi naziv jela</string>
 </resources>

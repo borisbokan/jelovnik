@@ -1,8 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:layout_weight="2">
+
+           <ImageView
+                android:id="@+id/imgSlika_UnIsJela"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_launcher" />
+
+            <ImageButton
+                android:id="@+id/imgBtnSlikaJela_UnIsJela"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="23dp"
+                android:src="@mipmap/ic_btn_jeloslika"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txvRejtingNum_UnIsJela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="3.35"
+                android:textColor="@color/cena_boja" />
+
+            <RatingBar
+                android:id="@+id/rtbRejting_UnIsJela"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_margin="3dp"
+                android:foregroundGravity="center_vertical|center_horizontal|center"
+                android:max="5"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/nadKategorijeJela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:padding="4dp"
+                android:text="Izbor kategorije jela"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+
+            <Spinner
+                android:id="@+id/spKategorije_UnIsJela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:spinnerMode="dialog" />
+
+            <TextView
+                android:id="@+id/nadNazivJela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:padding="4dp"
+                android:text="@string/naziv_jela"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+
+            <EditText
+                android:id="@+id/etxtNazivJela_UnIsJela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:ems="10"
+                android:hint="@string/unesi_naziv_jela"
+                android:inputType="text"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/nadOpisJela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:padding="5dp"
+                android:text="@string/opis_jela"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+
+            <EditText
+                android:id="@+id/etxtOpis_UnIsJela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:height="150dp"
+                android:ems="10"
+                android:gravity="top|start"
+                android:hint="@string/unesi_opis_jela"
+                android:inputType="text"
+                android:lines="50"
+                android:maxHeight="200dp"
+                android:maxLength="500"
+                android:minHeight="178dp"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/nadCenaJela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:padding="2dp"
+                android:text="@string/cena_jela"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+
+            <EditText
+                android:id="@+id/etxtCena_UnIsJela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:ems="10"
+                android:gravity="center_vertical|fill_vertical|center"
+                android:hint="npr 256.50"
+                android:inputType="numberDecimal"
+                android:padding="3dp"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnOdustajem_UnIsJela"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:padding="3dp"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/btnSnimi_UnIsJela"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:padding="3dp"
+                android:text="Button" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>
