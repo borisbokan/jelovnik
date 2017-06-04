@@ -9,6 +9,13 @@
         android:icon="@drawable/ic_dodaj_jelo"
         app:showAsAction="ifRoom"
         />
+
+    <item
+        android:id="@+id/menu_dodaj_kategoriju"
+        android:title="@string/dodaj_kategoriju"
+        android:icon="@mipmap/ic_dodaj_kateg"
+        app:showAsAction="ifRoom"
+        />
     <item
         android:id="@+id/menu_prepravi_jelo"
         android:title="@string/prepravi_jelo"

@@ -24,4 +24,7 @@
     <string name="unesi_naziv_jela">Unesi naziv jela</string>
     <string name="odustajem">Odustajem</string>
     <string name="snimi">Snimi</string>
+    <string name="unos_jela">Unos, ispravka jela</string>
+    <string name="unos_kategorija">Unos i pregled kategorija</string>
+    <string name="dodaj_kategoriju">Dodaj kategoriju</string>
 </resources>

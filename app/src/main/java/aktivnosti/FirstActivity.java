@@ -27,7 +27,7 @@ import fragmenti.ListaFragment;
 import rs.aleph.android.jelovnik.R;
 
 
-public class FirstActivity extends AppCompatActivity implements ListaFragment.OnItemSelectedListener, AdapterView.OnItemClickListener {
+public class FirstActivity extends AppCompatActivity implements ListaFragment.OnItemSelectedListener, AdapterView.OnItemClickListener,MySqlKategorija.ISnimiNovuKategoriju {
 
 
 	private boolean landscape;
@@ -51,20 +51,6 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		try {
-			 Kategorija kat1=new Kategorija("Rostilj");
-			 Kategorija kat2=new Kategorija("Kuvana jela");
-
-			MySqlKategorija kat=new MySqlKategorija(this);
-			kat.snimiNovuKategoriju(kat1);
-
-			MySqlKategorija mkat2=new MySqlKategorija(this);
-			mkat2.snimiNovuKategoriju(kat2);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -219,6 +205,15 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 
 
 				break;
+			case R.id.menu_dodaj_kategoriju:
+
+				Intent iNovaKateg=new Intent(this,UnosKategorija.class);
+				iNovaKateg.putExtra("tip_ope", UnosKategorija.TIP_OPERACIJE_NOVO);
+				startActivity(iNovaKateg);
+
+
+				break;
+
 			case R.id.menu_prepravi_jelo:
 				Toast.makeText(this, "Kliknuo na  " +  getString(R.string.fragment_prepravi_jelo), Toast.LENGTH_SHORT).show();
 				break;
@@ -259,4 +254,11 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		drawerToggle.onConfigurationChanged(configuration);
 	}
 
+	@Override
+	public void OnSnimiNovuKategoriju(int uspesno) {
+		if(uspesno==1){
+
+			Toast.makeText(this,"Uspesno unesena kategorija jela",Toast.LENGTH_LONG).show();
+		}
+	}
 }

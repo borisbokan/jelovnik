@@ -34,11 +34,19 @@
         </activity>
 
         <activity android:name="aktivnosti.UnosIspravkaJela"
-            android:label="@string/podesavanja"
+            android:label="@string/unos_jela"
             android:parentActivityName="aktivnosti.FirstActivity">
 
 
         </activity>
+
+        <activity android:name="aktivnosti.UnosKategorija"
+            android:label="@string/unos_kategorija"
+            android:parentActivityName="aktivnosti.FirstActivity">
+
+
+        </activity>
+
 
 
     </application>

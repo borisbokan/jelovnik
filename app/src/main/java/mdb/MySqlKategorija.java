@@ -25,8 +25,6 @@ public class MySqlKategorija {
     private  Context cont;
     private  Kategorija kategorija;
     private int id=0;
-    private Dao<Kategorija,Integer> daoKategorija=null;
-    private Dao<Jelo,Integer> daoJelo=null;
     private MyDbHelp dbHelp;
 
     //Intefejsi
@@ -59,10 +57,6 @@ public class MySqlKategorija {
         dbHelp=new MyDbHelp(_cont);
         this.cont=_cont;
 
-        this.daoKategorija= DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
-        this.daoJelo= DaoManager.createDao(dbHelp.getConnectionSource(),Jelo.class);
-
-
     }
 
     /**
@@ -72,11 +66,10 @@ public class MySqlKategorija {
      * @param _id
      */
     public MySqlKategorija(Context _cont, int _id) throws SQLException {
-        this.cont=_cont;
-        this.id=_id;
-        this.daoKategorija= DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
-        this.daoJelo= DaoManager.createDao(dbHelp.getConnectionSource(),Jelo.class);
-    }
+        this.cont = _cont;
+        this.id = _id;
+
+             }
 
 
     //*************************operaciej nad bazom *****************************************************
@@ -84,10 +77,15 @@ public class MySqlKategorija {
     /**
      * Update jela
      */
-    public void updateKategoriju() throws SQLException{
+    public void updateKategoriju() {
         if(getId()!=0){
             //TODO. Uraditi Sql upit za update
-            int rez=daoKategorija.updateId(this.kategorija,getId());
+            int rez= 0;
+            try {
+                rez = dbHelp.getDaoKategorija().updateId(this.kategorija,getId());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             PrepraviKategoriju.OnPrepraviKategoriju(rez);
 
             this.dbHelp.close();
@@ -101,10 +99,15 @@ public class MySqlKategorija {
     /**
      * Brisanje jela
      */
-    public void obrisiKategoriju() throws SQLException {
+    public void obrisiKategoriju()  {
         if(getId()!=0){
             //TODO. Uraditi Sql upit za delete
-            int rez=daoKategorija.deleteById(getId());//Brisem zapis po ID jela
+            int rez= 0;//Brisem zapis po ID jela
+            try {
+                rez = dbHelp.getDaoKategorija().deleteById(getId());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             ObrisiKategoriju.OnObrisiKategoriju(rez);
 
             this.dbHelp.close();
@@ -120,16 +123,19 @@ public class MySqlKategorija {
      * Unos novog jela
      * @param _kategorija
      */
-    public void snimiNovuKategoriju(Kategorija _kategorija) throws SQLException{
+    public void snimiNovuKategoriju(Kategorija _kategorija) throws SQLException {
 
         if(!_kategorija.equals(null)){
             //TODO. Uraditi Sql upit za delete
-            int rez=daoKategorija.create(_kategorija);
-            SnimiNovuKategoriju.OnSnimiNovuKategoriju(rez);
+            int rez= 0;
+
+                rez = dbHelp.getDaoKategorija().create(_kategorija);
+                //SnimiNovuKategoriju.OnSnimiNovuKategoriju(rez);
+
             this.dbHelp.close();
 
         }else{
-            infoPoruka.newInstance(cont,"Poruka o gresci","Objekat jelo ima  null vrednsot");
+            infoPoruka.newInstance(cont,"Poruka o gresci","Objekat jelo ima  null vrednost");
         }
 
 
@@ -139,13 +145,14 @@ public class MySqlKategorija {
 
     //Vraca listu svih objekata Jelo
     public List<Kategorija> getSveKategorije() throws SQLException {
-        return daoKategorija.queryForAll();
+
+        return dbHelp.getDaoKategorija().queryForAll();
     }
 
     //Trazi vrednost jela po ID zapisu
     public Kategorija getKategorijaPoId(int _id) throws SQLException {
 
-        return daoKategorija.queryForId(_id);
+        return dbHelp.getDaoKategorija().queryForId(_id);
     }
 
     /**
@@ -154,7 +161,7 @@ public class MySqlKategorija {
 
     public List<Jelo> getJelaPoKategoriji(Kategorija _kategorija) throws SQLException {
 
-        QueryBuilder upit=daoJelo.queryBuilder().join(daoKategorija.queryBuilder());
+        QueryBuilder upit=dbHelp.getDaoJelo().queryBuilder().join(dbHelp.getDaoKategorija().queryBuilder());
         Where<Jelo,Integer> where=upit.where().idEq(_kategorija);
 
         return where.query();
@@ -177,6 +184,8 @@ public class MySqlKategorija {
     public void setKategorija(Kategorija kategorija) {
         this.kategorija = kategorija;
     }
+
+
 
     //***********************Intefejs -> dogadjaji **************************************
     public interface IPrepraviKategoriju{

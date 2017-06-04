@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.stmt.query.In;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -20,6 +23,8 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
 
     private static final String DBNAME="jelovnik.db";
     private static final int DB_VER=1;
+    private Dao<Jelo, Integer> daoJelo=null;
+    private Dao<Kategorija, Integer> daoKateg=null;
 
 
     public MyDbHelp(Context context) {
@@ -64,8 +69,43 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
     }
 
 
+    public Dao<Jelo,Integer> getDaoJelo(){
+
+
+        try {
+            if(daoJelo==null){
+
+               daoJelo=getDao(Jelo.class);
+            }else {
+                daoJelo= DaoManager.createDao(this.connectionSource,Jelo.class);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return daoJelo;
+    }
+
+
+    public Dao<Kategorija,Integer> getDaoKategorija(){
+
+
+        try {
+            if(daoKateg==null){
+                daoKateg=getDao(Kategorija.class);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return daoKateg;
+    }
+
+
     @Override
     public void close() {
+        daoJelo=null;
+        daoKateg=null;
         super.close();
     }
 
