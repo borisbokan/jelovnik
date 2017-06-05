@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 
@@ -62,14 +63,13 @@ public class MySqlKategorija {
     /**
      * Konstruktor sa Id-om je ukoliko saljemo u cilju update ili brisanja podatka.
      * @param _cont
-
-     * @param _id
+     * @param _kategorija
      */
-    public MySqlKategorija(Context _cont, int _id) throws SQLException {
+    public MySqlKategorija(Context _cont, Kategorija _kategorija) throws SQLException {
         this.cont = _cont;
-        this.id = _id;
+        this.kategorija=_kategorija;
 
-             }
+    }
 
 
     //*************************operaciej nad bazom *****************************************************
@@ -128,8 +128,8 @@ public class MySqlKategorija {
         if(!_kategorija.equals(null)){
             //TODO. Uraditi Sql upit za delete
             int rez= 0;
-
-                rez = dbHelp.getDaoKategorija().create(_kategorija);
+                Dao<Kategorija,Integer> daoKat=DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
+                rez = daoKat.create(_kategorija);
                 //SnimiNovuKategoriju.OnSnimiNovuKategoriju(rez);
 
             this.dbHelp.close();

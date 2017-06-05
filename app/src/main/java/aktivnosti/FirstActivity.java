@@ -208,7 +208,7 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 			case R.id.menu_dodaj_kategoriju:
 
 				Intent iNovaKateg=new Intent(this,UnosKategorija.class);
-				iNovaKateg.putExtra("tip_ope", UnosKategorija.TIP_OPERACIJE_NOVO);
+				iNovaKateg.putExtra("tip_ope_kat", UnosKategorija.TIP_OPERACIJE_NOVO);
 				startActivity(iNovaKateg);
 
 

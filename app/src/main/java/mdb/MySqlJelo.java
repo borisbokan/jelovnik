@@ -24,8 +24,6 @@ public class MySqlJelo {
     private  Context cont;
     private  Jelo jelo;
     private int id=0;
-    private Dao<Jelo,Integer> daoJelo=null;
-    private Dao<Kategorija,Integer> daoKategorija=null;
     private MyDbHelp dbHelp;
 
     //Intefejsi
@@ -57,9 +55,6 @@ public class MySqlJelo {
     public MySqlJelo(Context _cont) throws SQLException {
         dbHelp=new MyDbHelp(_cont);
         this.cont=_cont;
-        this.daoKategorija= DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
-        this.daoJelo= DaoManager.createDao(dbHelp.getConnectionSource(),Jelo.class);
-
 
     }
 
@@ -69,10 +64,9 @@ public class MySqlJelo {
      * @param _id
      */
     public MySqlJelo(Context _cont, int _id) throws SQLException {
+        dbHelp=new MyDbHelp(_cont);
         this.cont=_cont;
         this.id=_id;
-        this.daoKategorija= DaoManager.createDao(dbHelp.getConnectionSource(),Kategorija.class);
-        this.daoJelo= DaoManager.createDao(dbHelp.getConnectionSource(),Jelo.class);
 
     }
 
@@ -85,7 +79,7 @@ public class MySqlJelo {
     public void updateJelo() throws SQLException{
         if(getId()!=0){
             //TODO. Uraditi Sql upit za update
-            int rez=daoJelo.updateId(jelo,getId());
+            int rez=dbHelp.getDaoJelo().updateId(jelo,getId());
             PrepraviJelo.OnPrepraviJelo(rez);
 
             this.dbHelp.close();
@@ -102,7 +96,7 @@ public class MySqlJelo {
     public void obrisiJelo() throws SQLException {
         if(getId()!=0){
             //TODO. Uraditi Sql upit za delete
-            int rez=daoJelo.deleteById(getId());//Brisem zapis po ID jela
+            int rez=dbHelp.getDaoJelo().deleteById(getId());//Brisem zapis po ID jela
             ObrisiJelo.OnObrisiJelo(rez);
 
             this.dbHelp.close();
@@ -122,7 +116,7 @@ public class MySqlJelo {
 
         if(!_jelo.equals(null)){
             //TODO. Uraditi Sql upit za delete
-            int rez=daoJelo.create(this.jelo);
+            int rez=dbHelp.getDaoJelo().create(this.jelo);
             SnimiNovoJelo.OnSnimiNovoJelo(rez);
             this.dbHelp.close();
 
@@ -137,13 +131,13 @@ public class MySqlJelo {
 
     //Vraca listu svih objekata Jelo
     private List<Jelo> getSvaJela() throws SQLException {
-        return daoJelo.queryForAll();
+        return dbHelp.getDaoJelo().queryForAll();
     }
 
     //Trazi vrednost jela po ID zapisu
     public Jelo getJeloPoId(int _id) throws SQLException {
 
-        return daoJelo.queryForId(_id);
+        return dbHelp.getDaoJelo().queryForId(_id);
     }
 
     /**
@@ -152,7 +146,7 @@ public class MySqlJelo {
 
     public List<Jelo> getJelaPoKategoriji(Kategorija _kategorija) throws SQLException {
 
-        QueryBuilder upit=daoJelo.queryBuilder().join(daoKategorija.queryBuilder());
+        QueryBuilder upit=dbHelp.getDaoJelo().queryBuilder().join(dbHelp.getDaoJelo().queryBuilder());
         Where<Jelo,Integer> where=upit.where().idEq(_kategorija);
 
         return where.query();

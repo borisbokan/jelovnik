@@ -23,8 +23,7 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
 
     private static final String DBNAME="jelovnik.db";
     private static final int DB_VER=1;
-    private Dao<Jelo, Integer> daoJelo=null;
-    private Dao<Kategorija, Integer> daoKateg=null;
+
 
 
     public MyDbHelp(Context context) {
@@ -71,13 +70,10 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
 
     public Dao<Jelo,Integer> getDaoJelo(){
 
-
+       Dao<Jelo, Integer> daoJelo=null;
         try {
             if(daoJelo==null){
-
-               daoJelo=getDao(Jelo.class);
-            }else {
-                daoJelo= DaoManager.createDao(this.connectionSource,Jelo.class);
+                daoJelo=DaoManager.createDao(connectionSource,Jelo.class);
             }
 
         } catch (SQLException e) {
@@ -89,25 +85,15 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
 
     public Dao<Kategorija,Integer> getDaoKategorija(){
 
-
+        Dao<Kategorija, Integer> daoKateg = null;
         try {
-            if(daoKateg==null){
-                daoKateg=getDao(Kategorija.class);
-            }
-
+            daoKateg=DaoManager.createDao(connectionSource,Kategorija.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return daoKateg;
     }
 
-
-    @Override
-    public void close() {
-        daoJelo=null;
-        daoKateg=null;
-        super.close();
-    }
 
 
     @Override
