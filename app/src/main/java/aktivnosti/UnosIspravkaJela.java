@@ -14,16 +14,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
-
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
+import adapteri.AdapterKategorije;
 import mdb.MySqlJelo;
 import mdb.MySqlKategorija;
 import mdb.dbmodel.Jelo;
 import mdb.dbmodel.Kategorija;
-import pomocne.Slike;
 import pomocne.infoPoruka;
 import rs.aleph.android.jelovnik.R;
 
@@ -63,28 +60,12 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
         etxtOpis=(EditText)findViewById(R.id.etxtOpis_UnIsJela);
         etxtCena=(EditText)findViewById(R.id.etxtCena_UnIsJela);
 
-
         tipOperacije=getIntent().getIntExtra("tip_ope",0);
-
         jelo=(Jelo)getIntent().getExtras().get("jelo");
 
-        MySqlKategorija myDbKate= null;
-        try {
-            myDbKate = new MySqlKategorija(this);
-            List<Kategorija> lsKate=myDbKate.getSveKategorije();
-            List<String> stavkeKategorije=new ArrayList<>();
-
-            for (Kategorija stavka : lsKate) {
-                stavkeKategorije.add(stavka.getNaziv());
-            }
-
-            ArrayAdapter<String> adKatego=new ArrayAdapter<String>(this,R.layout.stavka_kategorije,stavkeKategorije);
-            spKategorije.setAdapter(adKatego);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        MySqlKategorija lsKategorije=new MySqlKategorija(this);
+        AdapterKategorije adKategorije=new AdapterKategorije(this,lsKategorije.getSveKategorije());
+        spKategorije.setAdapter(adKategorije);
 
 
         btnOdustajem.setOnClickListener(this);
@@ -103,11 +84,9 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
             case R.id.btnOdustajem_UnIsJela:
 
-
                 Intent intPovratak=new Intent(this,FirstActivity.class);
                 startActivity(intPovratak);
                 break;
-
 
             case R.id.btnSnimi_UnIsJela:
 
@@ -138,7 +117,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
         Jelo jeloNovo=new Jelo();
 
-        jeloNovo.setSlika(Slike.getBytes(imgSlika));
+        jeloNovo.setSlika("Slika iz fajla");
         jeloNovo.setNaziv(etxtNaziv.getText().toString());
         jeloNovo.setOpis(etxtOpis.getText().toString());
         jeloNovo.setCena(Double.valueOf(etxtCena.getText().toString()));
@@ -157,7 +136,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
     private void ispravka() {
         Jelo jeloNovo=new Jelo();
 
-        jeloNovo.setSlika(Slike.getBytes(imgSlika));
+        jeloNovo.setSlika("Slika fajl");
         jeloNovo.setNaziv(etxtNaziv.getText().toString());
         jeloNovo.setOpis(etxtOpis.getText().toString());
         jeloNovo.setCena(Float.valueOf(etxtCena.getText().toString()));

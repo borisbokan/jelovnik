@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Jelovnik</string>
-    <string name="detalji_jela">Detalji jela</string>
     <string name="naziv_jela">Naziv jela</string>
     <string name="kategorija">Kategorija jela</string>
     <string name="opis_jela">Opis jela</string>
-    <string name="btn_poruci">Poruci jelo</string>
     <string name="dodaj_jelo">Dodaj jelo</string>
     <string name="prepravi_jelo">Prepravi jelo</string>
     <string name="obrisi_jelo">Obriši jelo</string>
     <string name="podesavanja">Podešavanja</string>
-    <string name="lista_jela">Lista jela</string>
-    <string name="lista_kategorija_jela">Listing kategorija i jela</string>
-    <string name="opis_podesavanja">Podesavanja opcija aplikacije</string>
     <string name="drawer_otvori">Otvori</string>
     <string name="drawer_zatvori">Zatvori</string>
     <string name="fragment_dodaj_jelo">Fragment dodaj jelo</string>
@@ -27,4 +22,8 @@
     <string name="unos_jela">Unos, ispravka jela</string>
     <string name="unos_kategorija">Unos i pregled kategorija</string>
     <string name="dodaj_kategoriju">Dodaj kategoriju</string>
+    <string name="kategorije">Kategorije</string>
+    <string name="ispravi_kategoriju">Ispravi kategoriju</string>
+    <string name="obrisi_kategoriju">Obrisi kategoriju</string>
+    <string name="nova_kategorija">Dodaj kategoriju</string>
 </resources>

@@ -16,9 +16,14 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import adapteri.DrawMeniAdapter;
+import mdb.MyDbHelp;
 import mdb.MySqlKategorija;
 import mdb.dbmodel.Kategorija;
 import model.NavigacioniMeni;
@@ -41,7 +46,6 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 	private boolean landscapeMode = false;
 	private boolean listaPrikaz = false;
 	private boolean detaljiPrikaz = false;
-
 	private int groPos;
 	private int position;
 
@@ -51,6 +55,28 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+
+		MySqlKategorija mojeKat = new MySqlKategorija(this);
+
+		if (mojeKat.getBrojKategorija() < 1) {
+			Kategorija katStart = new Kategorija();
+			katStart.setNaziv("OSTALO");
+			mojeKat.snimiNovuKategoriju(katStart);
+
+
+			Kategorija kat1 = new Kategorija();
+			kat1.setNaziv("Torte");
+			mojeKat.snimiNovuKategoriju(kat1);
+
+
+			Kategorija kat2 = new Kategorija();
+			kat2.setNaziv("Kolaci");
+			mojeKat.snimiNovuKategoriju(kat2);
+		}
+
+
+
 
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -202,15 +228,12 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 				Intent iNovoJelo=new Intent(this,UnosIspravkaJela.class);
 				iNovoJelo.putExtra("tip_ope", UnosIspravkaJela.TIP_OPERACIJE_NOVO);
 				startActivity(iNovoJelo);
-
-
 				break;
+
 			case R.id.menu_dodaj_kategoriju:
 
-				Intent iNovaKateg=new Intent(this,UnosKategorija.class);
-				iNovaKateg.putExtra("tip_ope_kat", UnosKategorija.TIP_OPERACIJE_NOVO);
-				startActivity(iNovaKateg);
-
+				Intent iListaKate=new Intent(this,ListaKategorija.class);
+				startActivity(iListaKate);
 
 				break;
 

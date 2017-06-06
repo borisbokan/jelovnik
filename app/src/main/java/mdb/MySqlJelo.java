@@ -2,14 +2,10 @@ package mdb;
 
 import android.content.Context;
 
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
-
 import java.sql.SQLException;
 import java.util.List;
-
 import mdb.dbmodel.Jelo;
 import mdb.dbmodel.Kategorija;
 import pomocne.infoPoruka;
@@ -18,8 +14,7 @@ import pomocne.infoPoruka;
  * Created by borcha on 02.06.17..
  */
 
-public class MySqlJelo {
-
+public class MySqlJelo extends MyDbHelp{
 
     private  Context cont;
     private  Jelo jelo;
@@ -53,9 +48,8 @@ public class MySqlJelo {
      * @param _cont
      */
     public MySqlJelo(Context _cont) throws SQLException {
-        dbHelp=new MyDbHelp(_cont);
+        super(_cont);
         this.cont=_cont;
-
     }
 
     /**
@@ -64,11 +58,20 @@ public class MySqlJelo {
      * @param _id
      */
     public MySqlJelo(Context _cont, int _id) throws SQLException {
-        dbHelp=new MyDbHelp(_cont);
+        super(_cont);
         this.cont=_cont;
         this.id=_id;
-
     }
+
+    //Uzimam refer...na MyDbHelper
+   /* private MyDbHelp getDbHelp(){
+        if(dbHelp==null){
+            dbHelp= OpenHelperManager.getHelper(this.cont,MyDbHelp.class);
+        }
+        return dbHelp;
+
+    }*/
+
 
 
     //*************************operaciej nad bazom *****************************************************
@@ -79,10 +82,10 @@ public class MySqlJelo {
     public void updateJelo() throws SQLException{
         if(getId()!=0){
             //TODO. Uraditi Sql upit za update
-            int rez=dbHelp.getDaoJelo().updateId(jelo,getId());
+            int rez=getDaoJelo().updateId(jelo,getId());
             PrepraviJelo.OnPrepraviJelo(rez);
 
-            this.dbHelp.close();
+          
         }else{
             infoPoruka.newInstance(cont,"Poruka o gresci","Ne postoji ID zapisa!. Ne mozete prepraviti podatak za Jelo");
 
@@ -96,10 +99,10 @@ public class MySqlJelo {
     public void obrisiJelo() throws SQLException {
         if(getId()!=0){
             //TODO. Uraditi Sql upit za delete
-            int rez=dbHelp.getDaoJelo().deleteById(getId());//Brisem zapis po ID jela
+            int rez=getDaoJelo().deleteById(getId());//Brisem zapis po ID jela
             ObrisiJelo.OnObrisiJelo(rez);
 
-            this.dbHelp.close();
+           
         }else{
             infoPoruka.newInstance(cont,"Poruka o gresci","Ne postoji ID zapisa!. Ne mozete prepraviti podatak za Jelo");
 
@@ -116,9 +119,9 @@ public class MySqlJelo {
 
         if(!_jelo.equals(null)){
             //TODO. Uraditi Sql upit za delete
-            int rez=dbHelp.getDaoJelo().create(this.jelo);
+            int rez=getDaoJelo().create(this.jelo);
             SnimiNovoJelo.OnSnimiNovoJelo(rez);
-            this.dbHelp.close();
+           
 
         }else{
             infoPoruka.newInstance(cont,"Poruka o gresci","Objekat jelo ima  null vrednsot");
@@ -131,13 +134,13 @@ public class MySqlJelo {
 
     //Vraca listu svih objekata Jelo
     private List<Jelo> getSvaJela() throws SQLException {
-        return dbHelp.getDaoJelo().queryForAll();
+        return getDaoJelo().queryForAll();
     }
 
     //Trazi vrednost jela po ID zapisu
     public Jelo getJeloPoId(int _id) throws SQLException {
 
-        return dbHelp.getDaoJelo().queryForId(_id);
+        return getDaoJelo().queryForId(_id);
     }
 
     /**
@@ -146,7 +149,7 @@ public class MySqlJelo {
 
     public List<Jelo> getJelaPoKategoriji(Kategorija _kategorija) throws SQLException {
 
-        QueryBuilder upit=dbHelp.getDaoJelo().queryBuilder().join(dbHelp.getDaoJelo().queryBuilder());
+        QueryBuilder upit=getDaoJelo().queryBuilder().join(getDaoJelo().queryBuilder());
         Where<Jelo,Integer> where=upit.where().idEq(_kategorija);
 
         return where.query();

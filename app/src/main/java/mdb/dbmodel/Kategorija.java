@@ -12,7 +12,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = Kategorija.tKATEGORIJA)
 public class Kategorija {
 
-    public static final String tKATEGORIJA="Kategorija";
+    public static final String tKATEGORIJA="tKATEGORIJA";
     public static final String tKATEGORIJA_ID="id";
     public static final String tKATEGORIJA_naziv="naziv";
 
@@ -56,6 +56,6 @@ public class Kategorija {
     }
 
     public String toString(){
-        return "Kategorija ( " + this.id + " - " + this.naziv + " ) ";
+        return  this.naziv;
     }
 }

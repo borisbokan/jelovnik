@@ -11,11 +11,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapteri.AdapterKategorije;
 import mdb.MySqlKategorija;
 import mdb.dbmodel.Kategorija;
 import rs.aleph.android.jelovnik.R;
@@ -41,62 +43,33 @@ public class UnosKategorija extends Activity implements AdapterView.OnItemClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.unos_kategorija);
 
-        tip_opr=getIntent().getIntExtra("tip_ope_kat",0);
-
-
-        lsvListaKategorija=(ListView)findViewById(R.id.lsvListaKategorija_unosKategorije);
         btnSnimiKategoriju=(Button)findViewById(R.id.btnSnimiKategoriju_unosKategorije);
         etxtNazivKategorije=(EditText)findViewById(R.id.etxtNazivKategorije_unosKategorije);
 
-        lsvListaKategorija.setOnItemClickListener(this);
+
         btnSnimiKategoriju.setOnClickListener(this);
 
-        ucitajKategoriUjeListu();
-
-        registerForContextMenu(lsvListaKategorija);
-
     }
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             ucitajZaIspravku((Kategorija) parent.getAdapter().getItem(position));
-
+            this.kategorija=(Kategorija) parent.getAdapter().getItem(position);
 
     }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()){
-
-            case R.id.btnSnimiKategoriju_unosKategorije:
-
-                if(tip_opr==TIP_OPERACIJE_NOVO){
-                    snimiNovo();
-                }else{
-                    ispraviKategoriju();
-                }
-
-
-                break;
-        }
-    }
-
 
 
     private void ucitajZaIspravku(Kategorija _kategorija){
-
         if(!_kategorija.equals(null)){
             etxtNazivKategorije.setText(_kategorija.getNaziv());
         }
-
     }
 
     private void ispraviKategoriju() {
         this.kategorija.setNaziv(etxtNazivKategorije.getText().toString());
-
         try {
-            MySqlKategorija myKat=new MySqlKategorija(this,this.kategorija);
+            MySqlKategorija myKat=new MySqlKategorija(this,kategorija);
             myKat.updateKategoriju();
 
         } catch (SQLException e) {
@@ -104,47 +77,14 @@ public class UnosKategorija extends Activity implements AdapterView.OnItemClickL
         }
     }
 
-
-
     private void snimiNovo() {
+        Kategorija kategorija=new Kategorija(etxtNazivKategorije.getText().toString());
 
-        try {
-            MySqlKategorija myKat=new MySqlKategorija(this);
-            Kategorija kategorija=new Kategorija(etxtNazivKategorije.getText().toString());
-            myKat.snimiNovuKategoriju(kategorija);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+         MySqlKategorija myKat=new MySqlKategorija(this);
+         myKat.snimiNovuKategoriju(kategorija);
     }
 
 
-    private void ucitajKategoriUjeListu(){
-
-
-        List<Kategorija> kateg= null;
-        try {
-            MySqlKategorija mojeKat=new MySqlKategorija(this);
-            kateg = mojeKat.getSveKategorije();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        ArrayAdapter<String> adListaKate=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getNaziveKateg(kateg));
-
-        lsvListaKategorija.setAdapter(adListaKate);
-
-
-    }
-
-
-    private List<String> getNaziveKateg(List<Kategorija> _listaKat){
-        List<String> lista=new ArrayList<>();
-        for (Kategorija stavka : _listaKat) {
-            lista.add(stavka.getNaziv().toString());
-        }
-
-        return lista;
-
-    }
 
 
     @Override
@@ -161,16 +101,37 @@ public class UnosKategorija extends Activity implements AdapterView.OnItemClickL
             switch (item.getItemId()){
 
                 case 0:
-                    try {
-                        MySqlKategorija mojeKat=new MySqlKategorija(this);
 
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
+                    MySqlKategorija mojeKat=new MySqlKategorija(this);
+
+
                     return super.onContextItemSelected(item);
 
             }
         }
         return super.onContextItemSelected(item);
     }
+
+
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+
+            case R.id.btnSnimiKategoriju_unosKategorije:
+
+                if(tip_opr==TIP_OPERACIJE_NOVO){
+                    snimiNovo();
+                    Toast.makeText(this,"Kliknuo novo snimi",Toast.LENGTH_SHORT).show();
+                }else{
+                    ispraviKategoriju();
+                    Toast.makeText(this,"Kliknuo ispravi kateg..",Toast.LENGTH_SHORT).show();
+                }
+
+
+                break;
+        }
+    }
+
 }

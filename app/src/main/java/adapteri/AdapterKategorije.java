@@ -1,18 +1,14 @@
 package adapteri;
 
 import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import mdb.dbmodel.Kategorija;
 import rs.aleph.android.jelovnik.R;
@@ -23,37 +19,30 @@ import rs.aleph.android.jelovnik.R;
 
 public class AdapterKategorije extends ArrayAdapter<Kategorija> {
 
+    LayoutInflater inflater;
 
-    private final Context cont;
-    TextView txvNazivKategorije;
 
     public AdapterKategorije(Context context,List<Kategorija> lsKategorije) {
         super(context, R.layout.stavka_kategorije,lsKategorije);
-        cont=context;
+
+
     }
 
 
     @Override
-    public View getView(int position,View vi, ViewGroup parent) {
+    public View getView(int position,View view, ViewGroup parent) {
 
-        txvNazivKategorije=(TextView)vi.findViewById(R.id.txvKategorja_stavkaKategorije);
+        inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view=inflater.inflate(R.layout.stavka_kategorije,null);
 
-        return vi;
+        Kategorija kate=getItem(position);
+        TextView txvNazivKategorije=(TextView)view.findViewById(R.id.txvKategorja_stavkaKategorije);
+        txvNazivKategorije.setText(kate.getNaziv());
+
+        return view;
     }
 
-    @Override
-    public int getCount() {
-        return super.getCount();
-    }
 
-    @Nullable
-    @Override
-    public Kategorija getItem(int position) {
-        return super.getItem(position);
-    }
 
-    @Override
-    public int getPosition(@Nullable Kategorija item) {
-        return super.getPosition(item);
-    }
+
 }

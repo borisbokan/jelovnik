@@ -3,10 +3,8 @@
 
     <!-- Osnovne boje -->
     <color name="bela">#FFFFFF</color>
-    <color name="crna">#000000</color>
 
     <!-- namenske boje -->
-    <color name="transparentna_crna_1">@android:color/transparent</color>
     <color name="primary">#66777f</color>
     <color name="navig_bar">#41809b</color>
 
@@ -31,9 +29,5 @@
 
     <color name="transparentna_10percent">#16000000</color>
     <color name="transparentna_20percent">#32000000</color>
-    <color name="transparentna_30percent">#48000000</color>
-    <color name="transparentna_40percent">#64000000</color>
-    <color name="transparentna_50percent">#80000000</color>
-    <color name="transparentna_60percent">#96000000</color>
 
 </resources>

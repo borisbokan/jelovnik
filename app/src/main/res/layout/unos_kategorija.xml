@@ -1,65 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="2dp"
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:padding="3dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="2dp"
+    android:layout_weight="2"
+    android:orientation="horizontal"
+    android:padding="3dp">
 
-        <TextView
-            android:id="@+id/nadMazivKategorije"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="42dp"
-            android:labelFor="@+id/etxtNazivKategorije_unosKategorije"
-            android:text="Naziv kategorije"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
+    <TextView
+        android:id="@+id/nadMazivKategorije"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="203dp"
+        android:labelFor="@+id/etxtNazivKategorije_unosKategorije"
+        android:text="Naziv kategorije"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
 
-        <EditText
-            android:id="@+id/etxtNazivKategorije_unosKategorije"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/nadMazivKategorije"
-            android:layout_below="@+id/nadMazivKategorije"
-            android:ems="10"
-            android:hint="Unesi naziv kategorije"
-            android:inputType="textPersonName"
-            android:maxWidth="30dp"
-            android:textSize="18sp" />
+    <EditText
+        android:id="@+id/etxtNazivKategorije_unosKategorije"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/nadMazivKategorije"
+        android:layout_below="@+id/nadMazivKategorije"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Unesi naziv kategorije"
+        android:inputType="textPersonName"
+        android:maxWidth="30dp"
+        android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/btnSnimiKategoriju_unosKategorije"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/etxtNazivKategorije_unosKategorije"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="27dp"
-            android:text="Snimi" />
-    </RelativeLayout>
+    <Button
+        android:id="@+id/btnSnimiKategoriju_unosKategorije"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/etxtNazivKategorije_unosKategorije"
+        android:layout_below="@+id/etxtNazivKategorije_unosKategorije"
+        android:layout_marginTop="54dp"
+        android:text="Snimi" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="2dp"
-        android:layout_weight="3"
-        android:orientation="horizontal"
-        android:padding="3dp">
 
-        <ListView
-            android:id="@+id/lsvListaKategorija_unosKategorije"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight="3"
-            android:padding="5dp" />
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -19,10 +19,10 @@ public class Jelo {
 
 
 
-    @DatabaseField(columnName = tJELO_id)
+    @DatabaseField(columnName = tJELO_id,generatedId = true)
     public int id;
     @DatabaseField(columnName = tJELO_slika)
-    public byte[] slika;
+    public String slika;
     @DatabaseField(columnName = tJELO_naziv)
     public String naziv;
     @DatabaseField(columnName = tJELO_opis)
@@ -34,6 +34,7 @@ public class Jelo {
 
     @DatabaseField(foreign = true,foreignAutoRefresh = true)
     public Kategorija kateg;
+
 
 
     public Jelo(){
@@ -49,7 +50,7 @@ public class Jelo {
      * @param _cena
      * @param _kolicina
      */
-    public Jelo(byte[] _slika,String _naziv, String _opis, Double _cena,float _kolicina){
+    public Jelo(String _slika,String _naziv, String _opis, Double _cena,float _kolicina){
 
         this.slika=_slika;
         this.naziv=_naziv;
@@ -68,11 +69,11 @@ public class Jelo {
         this.id = id;
     }
 
-    public byte[] getSlika() {
+    public String getSlika() {
         return slika;
     }
 
-    public void setSlika(byte[] slika) {
+    public void setSlika(String slika) {
         this.slika = slika;
     }
 
@@ -123,6 +124,6 @@ public class Jelo {
 
 
     public String toString(){
-        return "Jelo ( id:" +  this.id + "  naziv: " + this.naziv +  " opis: " + this.opis + "  Kategorija: " + this.getNaziv() + " " + this.kolicina + " gr )";
+        return "Jelo ( id:" +  this.id + "  naziv: " + this.naziv +  " opis: " + this.opis + "  ListaKategorija: " + this.getNaziv() + " " + this.kolicina + " gr )";
     }
 }

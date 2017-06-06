@@ -40,9 +40,17 @@
 
         </activity>
 
+        <activity android:name="aktivnosti.ListaKategorija"
+            android:label="@string/kategorije"
+            android:parentActivityName="aktivnosti.FirstActivity">
+
+
+        </activity>
+        <!-- android:theme="@style/AlertDialog.AppCompat" -->
         <activity android:name="aktivnosti.UnosKategorija"
             android:label="@string/unos_kategorija"
-            android:parentActivityName="aktivnosti.FirstActivity">
+
+            android:parentActivityName="aktivnosti.ListaKategorija">
 
 
         </activity>

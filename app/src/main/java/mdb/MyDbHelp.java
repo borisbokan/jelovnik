@@ -2,6 +2,7 @@ package mdb;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 
 import mdb.dbmodel.Jelo;
 import mdb.dbmodel.Kategorija;
+import pomocne.infoPoruka;
 
 /**
  * Created by borcha on 02.06.17..
@@ -23,12 +25,14 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
 
     private static final String DBNAME="jelovnik.db";
     private static final int DB_VER=1;
+    private final Context cont;
 
-
+    private Dao<Jelo, Integer> daoJelo=null;
+    private Dao<Kategorija, Integer> daoKateg = null;
 
     public MyDbHelp(Context context) {
-
-        super(context, DBNAME, null,DB_VER);
+           super(context, DBNAME, null,DB_VER);
+            cont=context;
     }
 
 
@@ -38,8 +42,10 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.createTable(conn, Kategorija.class);
             TableUtils.createTable(conn, Jelo.class);
+
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
 
@@ -49,17 +55,18 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase database, ConnectionSource conn, int oldVersion, int newVersion) {
 
         try {
-
-            TableUtils.dropTable(conn,Jelo.class,true);
             TableUtils.dropTable(conn,Kategorija.class,true);
+            TableUtils.dropTable(conn,Jelo.class,true);
+
             onCreate(database,conn);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
 
     }
+
 
 
     @Override
@@ -68,36 +75,37 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
     }
 
 
-    public Dao<Jelo,Integer> getDaoJelo(){
+    public Dao<Jelo,Integer> getDaoJelo() throws SQLException {
 
-       Dao<Jelo, Integer> daoJelo=null;
-        try {
-            if(daoJelo==null){
-                daoJelo=DaoManager.createDao(connectionSource,Jelo.class);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if(daoJelo==null) {
+            daoJelo = getDao(Jelo.class);
         }
+
         return daoJelo;
     }
 
 
-    public Dao<Kategorija,Integer> getDaoKategorija(){
+    public Dao<Kategorija,Integer> getDaoKategorija() throws SQLException{
 
-        Dao<Kategorija, Integer> daoKateg = null;
-        try {
-            daoKateg=DaoManager.createDao(connectionSource,Kategorija.class);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if(daoKateg==null){
+            daoKateg=getDao(Kategorija.class);
         }
+
         return daoKateg;
     }
 
+    @Override
+    public void close() {
+        Log.i("baza","Zatvorena");
+        daoKateg=null;
+        daoJelo=null;
 
+        super.close();
+    }
 
     @Override
-    public SQLiteDatabase getWritableDatabase() {
-        return super.getWritableDatabase();
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        Log.i("baza","Otovrena");
     }
 }
