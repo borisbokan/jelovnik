@@ -32,7 +32,7 @@ public class Jelo {
     @DatabaseField(columnName = tJELO_kolicina)
     public float kolicina;
 
-    @DatabaseField(foreign = true,foreignAutoRefresh = true)
+    @DatabaseField(foreign = true,foreignAutoCreate = true,foreignAutoRefresh = true)
     public Kategorija kateg;
 
 

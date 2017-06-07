@@ -14,9 +14,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
+
 import java.sql.SQLException;
+import java.util.List;
 
 import adapteri.AdapterKategorije;
+import mdb.MyDbHelp;
 import mdb.MySqlJelo;
 import mdb.MySqlKategorija;
 import mdb.dbmodel.Jelo;
@@ -44,6 +50,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
     Spinner spKategorije;
     private int tipOperacije=0;
     private Jelo jelo;
+    private MyDbHelp myDb;
 
 
     @Override
@@ -63,9 +70,22 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
         tipOperacije=getIntent().getIntExtra("tip_ope",0);
         jelo=(Jelo)getIntent().getExtras().get("jelo");
 
-        MySqlKategorija lsKategorije=new MySqlKategorija(this);
-        AdapterKategorije adKategorije=new AdapterKategorije(this,lsKategorije.getSveKategorije());
-        spKategorije.setAdapter(adKategorije);
+        try {
+            Dao<Kategorija,Integer> daoKategorija=getDbHelp().getDaoKategorija();
+            List<Kategorija> lista = getDbHelp().getDaoKategorija().queryForAll();
+            ArrayAdapter<Kategorija> adListaKate=new ArrayAdapter<Kategorija>(this,android.R.layout.simple_spinner_dropdown_item,lista);
+
+
+            spKategorije.setAdapter(adListaKate);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        /*MySqlKategorija lsKategorije=new MySqlKategorija(this);
+        AdapterKategorije adKategorije=new AdapterKategorije(this,lsKategorije.getSveKategorije());*/
+
+        //AdapterKategorije adKategorije=new AdapterKategorije(this,lista);
+
 
 
         btnOdustajem.setOnClickListener(this);
@@ -75,7 +95,13 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
     }
 
+    private MyDbHelp getDbHelp(){
+        if(myDb==null){
+            myDb= OpenHelperManager.getHelper(this,MyDbHelp.class);
+        }
+        return myDb;
 
+    }
     @Override
     public void onClick(View v) {
 

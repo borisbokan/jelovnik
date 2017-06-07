@@ -24,7 +24,6 @@ public class MySqlKategorija extends MyDbHelp{
     private  Context cont;
     private  Kategorija kategorija;
     private int id=0;
-    private MyDbHelp dbHelp;
 
     //Intefejsi
     public  ISnimiNovuKategoriju SnimiNovuKategoriju;
@@ -44,7 +43,7 @@ public class MySqlKategorija extends MyDbHelp{
     }
 
     public void setOnObrisiKategoriju(IObrisiKategoriju _obrisiKategoriju){
-        ObrisiKategoriju=_obrisiKategoriju;
+       ObrisiKategoriju=_obrisiKategoriju;
 
     }
 
@@ -56,6 +55,8 @@ public class MySqlKategorija extends MyDbHelp{
     public MySqlKategorija(Context _cont){
         super(_cont);
         this.cont=_cont;
+        SnimiNovuKategoriju=null;
+
 
     }
 
@@ -65,23 +66,14 @@ public class MySqlKategorija extends MyDbHelp{
      * @param _cont
      * @param _kategorija
      */
-    public MySqlKategorija(Context _cont, Kategorija _kategorija) throws SQLException {
+    public MySqlKategorija(Context _cont, Kategorija _kategorija) {
         super(_cont);
-
         this.cont = _cont;
         this.kategorija=_kategorija;
+        ObrisiKategoriju=null;
+        PrepraviKategoriju=null;
 
     }
-
-
-    //Uzimam refer...na MyDbHelper
- /*   private MyDbHelp getDbHelp(){
-        if(dbHelp==null){
-            dbHelp= OpenHelperManager.getHelper(this.cont,MyDbHelp.class);
-        }
-        return dbHelp;
-
-    }*/
 
 
     //*************************operaciej nad bazom *****************************************************
@@ -89,22 +81,19 @@ public class MySqlKategorija extends MyDbHelp{
     /**
      * Update jela
      */
-    public void updateKategoriju() {
-        if(getId()!=0){
-            //TODO. Uraditi Sql upit za update
-            int rez= 0;
-            try {
-                rez = getDaoKategorija().updateId(this.kategorija,getId());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-           // PrepraviKategoriju.OnPrepraviKategoriju(rez);
+    public void prepraviKategoriju() {
 
+       int rez= 0;
 
-        }else{
-            infoPoruka.newInstance(cont,"Poruka o gresci","Ne postoji ID zapisa!. Ne mozete prepraviti podatak za Jelo");
-
+        try {
+            rez = getDaoKategorija().update(this.kategorija);
+            //PrepraviKategoriju.OnPrepraviKategoriju(rez);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+
+
 
     }
 
@@ -112,26 +101,21 @@ public class MySqlKategorija extends MyDbHelp{
      * Brisanje jela
      */
     public void obrisiKategoriju()  {
-        if(getId()!=0){
-            //TODO. Uraditi Sql upit za delete
-            int rez= 0;//Brisem zapis po ID jela
-            try {
-                getDaoKategorija().deleteById(getId());
+        int rez= 0;
+            try{
+
+                rez=getDaoKategorija().delete(kategorija);
+                //ObrisiKategoriju.OnObrisiKategoriju(rez);
+
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            //ObrisiKategoriju.OnObrisiKategoriju(rez);
 
-
-        }else{
-            infoPoruka.newInstance(cont,"Poruka o gresci","Ne postoji ID zapisa!. Ne mozete prepraviti podatak za Jelo");
-
-        }
-
-    }
 
 
 
+    }
 
     /**
      * Unos novog jela
@@ -139,22 +123,16 @@ public class MySqlKategorija extends MyDbHelp{
      */
     public void snimiNovuKategoriju(Kategorija _kategorija) {
 
-        if(!_kategorija.equals(null)){
+        if(!_kategorija.equals(null)) {
             //TODO. Uraditi Sql upit za delete
-            int rez= 0;
+            int rez = 0;
             try {
                 rez = getDaoKategorija().create(_kategorija);
-
-                if(rez==1){
-                    infoPoruka.newInstance(cont,"Poruka o gresci","Grupa pod nazivom " + _kategorija.getNaziv().toString() + " snimljena.");
-                }
+                //SnimiNovuKategoriju.OnSnimiNovuKategoriju(rez);
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            //SnimiNovuKategoriju.OnSnimiNovuKategoriju(rez);
-        }else{
-            infoPoruka.newInstance(cont,"Poruka o gresci","Objekat jelo ima  null vrednost");
         }
 
     }
@@ -172,9 +150,14 @@ public class MySqlKategorija extends MyDbHelp{
     }
 
     //Trazi vrednost jela po ID zapisu
-    public Kategorija getKategorijaPoId(int _id) throws SQLException {
-
-        return getDaoKategorija().queryForId(_id);
+    public Kategorija getKategorijaPoId(int _id) {
+        Kategorija kategorija=null;
+        try {
+            kategorija= getDaoKategorija().queryForId(_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return kategorija;
     }
 
     /**
@@ -222,7 +205,7 @@ public class MySqlKategorija extends MyDbHelp{
 
     //***********************Intefejs -> dogadjaji **************************************
     public interface IPrepraviKategoriju{
-        void OnPrepraviKategoriju(int uspesno);
+        public void OnPrepraviKategoriju(int uspesno);
     }
 
     public interface IObrisiKategoriju{

@@ -46,10 +46,10 @@
 
 
         </activity>
-        <!-- android:theme="@style/AlertDialog.AppCompat" -->
+
         <activity android:name="aktivnosti.UnosKategorija"
             android:label="@string/unos_kategorija"
-
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog.Alert"
             android:parentActivityName="aktivnosti.ListaKategorija">
 
 

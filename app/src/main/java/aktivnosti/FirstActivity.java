@@ -48,6 +48,7 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 	private boolean detaljiPrikaz = false;
 	private int groPos;
 	private int position;
+	private MyDbHelp myDb;
 
 
 	@Override
@@ -55,27 +56,29 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		int br=0;
+		try {
+
+			Dao<Kategorija,Integer> daoKategorija = getDbHelp().getDaoKategorija();
+			br=daoKategorija.queryForAll().size();
 
 
-		MySqlKategorija mojeKat = new MySqlKategorija(this);
-
-		if (mojeKat.getBrojKategorija() < 1) {
+		  if (br < 1) {
 			Kategorija katStart = new Kategorija();
 			katStart.setNaziv("OSTALO");
-			mojeKat.snimiNovuKategoriju(katStart);
+			daoKategorija.create(katStart);
 
 
-			Kategorija kat1 = new Kategorija();
-			kat1.setNaziv("Torte");
-			mojeKat.snimiNovuKategoriju(kat1);
-
-
-			Kategorija kat2 = new Kategorija();
-			kat2.setNaziv("Kolaci");
-			mojeKat.snimiNovuKategoriju(kat2);
 		}
 
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+
+		Toast.makeText(this,"Test:" + br,Toast.LENGTH_LONG).show();
 
 
 
@@ -255,7 +258,17 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		getSupportActionBar().setTitle(title);
 	}
 
+	/**
+	 * DbHelper
+	 * @return
+	 */
+	private MyDbHelp getDbHelp(){
+		if(myDb==null){
+			myDb= OpenHelperManager.getHelper(this,MyDbHelp.class);
+		}
+		return myDb;
 
+	}
 
 	// Method(s) that manage NavigationDrawer.
 

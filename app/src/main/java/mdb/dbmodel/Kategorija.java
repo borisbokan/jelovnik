@@ -20,9 +20,6 @@ public class Kategorija {
     int id;
     @DatabaseField(columnName = tKATEGORIJA_naziv)
     private String naziv;
-    @DatabaseField(foreignColumnName = "kateg",foreign = true,foreignAutoCreate = true,foreignAutoRefresh = true)
-    public ForeignCollection<Jelo> jela;
-
 
 
     public Kategorija(){
@@ -51,9 +48,6 @@ public class Kategorija {
         this.naziv = naziv;
     }
 
-     public void addJelo(Jelo _jelo) {
-       this.jela.add(_jelo);
-    }
 
     public String toString(){
         return  this.naziv;
