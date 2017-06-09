@@ -8,21 +8,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
-
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
-
-import java.sql.SQLException;
 import java.util.List;
-
-import adapteri.AdapterKategorije;
-import mdb.MyDbHelp;
 import mdb.MySqlJelo;
 import mdb.MySqlKategorija;
 import mdb.dbmodel.Jelo;
@@ -34,7 +27,7 @@ import rs.aleph.android.jelovnik.R;
  * Created by borcha on 02.06.17..
  */
 
-public class UnosIspravkaJela extends Activity implements View.OnClickListener,MySqlJelo.ISnimiNovoJelo,MySqlJelo.IPrepraviJelo {
+public class UnosIspravkaJela extends Activity implements View.OnClickListener,MySqlJelo.ISnimiNovoJelo,MySqlJelo.IPrepraviJelo, AdapterView.OnItemSelectedListener {
 
 
     public static final int UZMI_SLIKU_FAJL =1 ;
@@ -48,9 +41,11 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
     Button btnSnimi,btnOdustajem;
     EditText etxtNaziv,etxtOpis,etxtCena;
     Spinner spKategorije;
-    private int tipOperacije=0;
+    private int tipOperacije;
     private Jelo jelo;
-    private MyDbHelp myDb;
+
+    private Kategorija selKategorija;
+    private int id;
 
 
     @Override
@@ -68,26 +63,21 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
         etxtCena=(EditText)findViewById(R.id.etxtCena_UnIsJela);
 
         tipOperacije=getIntent().getIntExtra("tip_ope",0);
-        jelo=(Jelo)getIntent().getExtras().get("jelo");
+        id=getIntent().getIntExtra("id_jelo",0);
 
-        try {
-            Dao<Kategorija,Integer> daoKategorija=getDbHelp().getDaoKategorija();
-            List<Kategorija> lista = getDbHelp().getDaoKategorija().queryForAll();
+
+        if(tipOperacije==TIP_OPERACIJE_ISPRAVI){
+            getJeloPoID(id);
+            pripremiZaIspravku(id);
+        }
+
+            MySqlKategorija dbKateg=new MySqlKategorija(this);
+            List<Kategorija> lista= dbKateg.getSveKategorije();
+
             ArrayAdapter<Kategorija> adListaKate=new ArrayAdapter<Kategorija>(this,android.R.layout.simple_spinner_dropdown_item,lista);
-
-
             spKategorije.setAdapter(adListaKate);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        /*MySqlKategorija lsKategorije=new MySqlKategorija(this);
-        AdapterKategorije adKategorije=new AdapterKategorije(this,lsKategorije.getSveKategorije());*/
-
-        //AdapterKategorije adKategorije=new AdapterKategorije(this,lista);
-
-
-
+        spKategorije.setOnItemSelectedListener(this);
         btnOdustajem.setOnClickListener(this);
         btnSnimi.setOnClickListener(this);
         imgbDodajSliku.setOnClickListener(this);
@@ -95,13 +85,33 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
     }
 
-    private MyDbHelp getDbHelp(){
-        if(myDb==null){
-            myDb= OpenHelperManager.getHelper(this,MyDbHelp.class);
-        }
-        return myDb;
+    private void getJeloPoID(int _id) {
+        MySqlJelo dbJelo=new MySqlJelo(this);
+        jelo=dbJelo.getJeloPoId(_id);
+    }
+
+    private void pripremiZaIspravku(int _id) {
+         MySqlJelo dbJelo=new MySqlJelo(this);
+         jelo=dbJelo.getJeloPoId(_id);
+
+         etxtNaziv.setText(jelo.getNaziv());
+         etxtCena.setText(String.valueOf(jelo.getCena()));
+         spKategorije.setSelection(getJeloNaPoziciji());
+
 
     }
+
+    private int getJeloNaPoziciji() {
+
+        for (int i=0;i<spKategorije.getCount();i++) {
+            Kategorija kategorija=(Kategorija)spKategorije.getItemAtPosition(i);
+              if(kategorija.equals(this.jelo.getKategorija().getNaziv())){
+                  return i;
+              }
+        }
+        return 0;
+    }
+
     @Override
     public void onClick(View v) {
 
@@ -147,6 +157,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
         jeloNovo.setNaziv(etxtNaziv.getText().toString());
         jeloNovo.setOpis(etxtOpis.getText().toString());
         jeloNovo.setCena(Double.valueOf(etxtCena.getText().toString()));
+        jeloNovo.setKategorija(selKategorija);
 
         MySqlJelo unosJela= null;
 
@@ -176,6 +187,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
         jeloNovo.setNaziv(etxtNaziv.getText().toString());
         jeloNovo.setOpis(etxtOpis.getText().toString());
         jeloNovo.setCena(Float.valueOf(etxtCena.getText().toString()));
+        jeloNovo.setKategorija(selKategorija);
 
         MySqlJelo unosJela= null;
 
@@ -243,5 +255,15 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
             }
 
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        selKategorija=(Kategorija)parent.getItemAtPosition(position);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        selKategorija=(Kategorija)parent.getItemAtPosition(0);
     }
 }

@@ -17,9 +17,8 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import model.Jelo;
-import model.Sastojak;
+
+import mdb.dbmodel.Jelo;
 import rs.aleph.android.jelovnik.R;
 
 
@@ -56,7 +55,7 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         txvKategorija=(TextView)vi.findViewById(R.id.txtKategJela_detalji);
         txvOpis=(TextView)vi.findViewById(R.id.txtOpis_detalji);
         txvCena=(TextView)vi.findViewById(R.id.txtCena_detalji);
-        lsvSastojci=(ListView)vi.findViewById(R.id.lsvsastojci_detalji);
+
 
 
         return vi;
@@ -95,10 +94,6 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         DecimalFormat decFor=new DecimalFormat("#.00");
         String cena=decFor.format(selJelo.getCena());
 
-        ArrayList<Sastojak> sastojci=selJelo.getArlSastojciKalorijskeVrednosti();
-        ArrayAdapter<Sastojak> adSastojci=new ArrayAdapter<Sastojak>(getActivity(),android.R.layout.simple_list_item_1,sastojci);
-        lsvSastojci.setAdapter(adSastojci);
-
 
         txvNaziv.setText(selJelo.getNaziv());
         txvOpis.setText(selJelo.getOpis());
@@ -136,10 +131,6 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
 
         DecimalFormat decFor=new DecimalFormat("#.00");
         String cena=decFor.format(selJelo.getCena());
-
-        ArrayList<Sastojak> sastojci=selJelo.getArlSastojciKalorijskeVrednosti();
-        ArrayAdapter<Sastojak> adSastojci=new ArrayAdapter<Sastojak>(getActivity(),android.R.layout.simple_list_item_1,sastojci);
-        lsvSastojci.setAdapter(adSastojci);
 
 
         txvNaziv.setText(selJelo.getNaziv());

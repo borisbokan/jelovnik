@@ -142,21 +142,32 @@ public class MySqlJelo extends MyDbHelp{
     }
 
     //Trazi vrednost jela po ID zapisu
-    public Jelo getJeloPoId(int _id) throws SQLException {
+    public Jelo getJeloPoId(int _id)  {
 
-        return getDaoJelo().queryForId(_id);
+        try {
+            return getDaoJelo().queryForId(_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
      *  Vraca listu jela po kategoriji
      */
 
-    public List<Jelo> getJelaPoKategoriji(Kategorija _kategorija) throws SQLException {
+    public List<Jelo> getJelaPoKategoriji(Kategorija _kategorija)  {
+        List<Jelo> jela=null;
+        try {
+            QueryBuilder upit = getDaoJelo().queryBuilder();
+            Where<Jelo,Integer> where=upit.where().idEq(getDaoKategorija(),_kategorija);
+            jela=where.query();
 
-        QueryBuilder upit=getDaoJelo().queryBuilder().join(getDaoJelo().queryBuilder());
-        Where<Jelo,Integer> where=upit.where().idEq(_kategorija);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        return where.query();
+        return jela;
     }
 
     public void setJelo(Jelo jelo) {
@@ -169,6 +180,17 @@ public class MySqlJelo extends MyDbHelp{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getBrojJela() {
+        int br=0;
+        try {
+            br=getDaoJelo().queryForAll().size();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return br;
     }
 
 

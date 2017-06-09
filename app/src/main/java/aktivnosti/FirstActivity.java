@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import adapteri.DrawMeniAdapter;
 import mdb.MyDbHelp;
+import mdb.MySqlJelo;
 import mdb.MySqlKategorija;
 import mdb.dbmodel.Kategorija;
 import model.NavigacioniMeni;
@@ -48,7 +50,6 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 	private boolean detaljiPrikaz = false;
 	private int groPos;
 	private int position;
-	private MyDbHelp myDb;
 
 
 	@Override
@@ -56,29 +57,23 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		int br=0;
-		try {
+		int brKat=0;
+		int brJela=0;
 
-			Dao<Kategorija,Integer> daoKategorija = getDbHelp().getDaoKategorija();
-			br=daoKategorija.queryForAll().size();
+			MySqlKategorija dbKat=new MySqlKategorija(this);
+			brKat=dbKat.getBrojKategorija();
 
+		    MySqlJelo dbJela=new MySqlJelo(this);
+		    brJela= dbJela.getBrojJela();
 
-		  if (br < 1) {
+		  if (brKat < 1) {
 			Kategorija katStart = new Kategorija();
 			katStart.setNaziv("OSTALO");
-			daoKategorija.create(katStart);
-
-
+			dbKat.snimiNovuKategoriju(katStart);
 		}
 
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-
-
-		Toast.makeText(this,"Test:" + br,Toast.LENGTH_LONG).show();
+		Log.i("br_kat",String.valueOf(brKat));
+		Log.i("br_jel",String.valueOf(brJela));
 
 
 
@@ -258,19 +253,7 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		getSupportActionBar().setTitle(title);
 	}
 
-	/**
-	 * DbHelper
-	 * @return
-	 */
-	private MyDbHelp getDbHelp(){
-		if(myDb==null){
-			myDb= OpenHelperManager.getHelper(this,MyDbHelp.class);
-		}
-		return myDb;
 
-	}
-
-	// Method(s) that manage NavigationDrawer.
 
 	// onPostCreate method is called ofthen onRestoreInstanceState to synchronize toggle state
 	@Override

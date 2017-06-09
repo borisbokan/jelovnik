@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
+import mdb.dbmodel.Jelo;
 import rs.aleph.android.jelovnik.R;
 
 /**
