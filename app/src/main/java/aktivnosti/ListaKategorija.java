@@ -107,8 +107,9 @@ public class ListaKategorija extends AppCompatActivity implements AdapterView.On
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
-        menu.add(13,0,0,R.string.ispravi_kategoriju).setIcon(R.mipmap.ic_ispravi_cekic);
-        menu.add(13,1,1,R.string.obrisi_kategoriju).setIcon(R.mipmap.ic_obrisi_jelo);
+
+        menu.add(13,0,0,R.string.ispravi_kategoriju).setIcon(R.drawable.ic_action_prepravi);
+        menu.add(13,1,1,R.string.obrisi_kategoriju).setIcon(R.drawable.ic_action_obrisi);
 
     }
 

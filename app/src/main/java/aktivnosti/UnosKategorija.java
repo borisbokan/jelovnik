@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 import mdb.MySqlKategorija;
 import mdb.dbmodel.Kategorija;
@@ -104,10 +103,10 @@ public class UnosKategorija extends Activity implements  View.OnClickListener {
                 if(tip_opr==TIP_OPERACIJE_NOVO){
                     snimiNovo();
                     finish();
-                    Toast.makeText(this,"Kliknuo novo snimi",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this,"Kliknuo novo snimi",Toast.LENGTH_SHORT).show();
                 }else{
                     ispraviKategoriju();
-                    Toast.makeText(this,"Kliknuo ispravi kateg..",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this,"Kliknuo ispravi kateg..",Toast.LENGTH_SHORT).show();
                     finish();
                 }
 

@@ -21,12 +21,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.ByteOrder;
 
+import rs.aleph.android.jelovnik.R;
+
 public class Slike {
 
     public int trenutni_bayt = 0;
 
-    public Slike() {
-    }
 
     // convert from bitmap to byte array
     public static byte[] getBytes(ImageView slika) {
@@ -94,4 +94,22 @@ public class Slike {
 
     }
 
+
+    /**
+     * Uzimanje slike iz fajlča tj postavkom fajl path
+     * @param _putanja
+     * @param _imeFajlaSlike
+     * @return  Bitmap
+     */
+    public static Bitmap getSlikaIzFajla(String _putanja, String _imeFajlaSlike){
+        File slikaFajl = new File(_putanja+_imeFajlaSlike);
+
+        if(slikaFajl.exists()){
+
+            Bitmap bitmapSlika = BitmapFactory.decodeFile(_putanja+_imeFajlaSlike);
+            return bitmapSlika;
+
+        }
+         return null;
+    }
 }

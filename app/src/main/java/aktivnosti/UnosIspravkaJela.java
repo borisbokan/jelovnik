@@ -149,13 +149,23 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
         jeloNovo.setCena(Double.valueOf(etxtCena.getText().toString()));
 
         MySqlJelo unosJela= null;
-        try {
-            unosJela = new MySqlJelo(this);
-            unosJela.snimiNovoJelo(jeloNovo);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        unosJela = new MySqlJelo(this);
+        unosJela.snimiNovoJelo(jeloNovo);
+        unosJela.setOnSnimiNovoJelo(new MySqlJelo.ISnimiNovoJelo() {
+            @Override
+            public void OnSnimiNovoJelo(int uspesno) {
+                if(uspesno==1){
+                    infoPoruka.newInstance(getBaseContext(),"Obavestenje snimanja jela","Uspesno snimljeno jelo u bazu.");
+                }else{
+                    infoPoruka.newInstance(getBaseContext(),"Obavestenje snimanja jela","Neupesno snimljena jela");
+                }
+
+            }
+        });
+
+
+
 
     }
 
@@ -168,13 +178,21 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
         jeloNovo.setCena(Float.valueOf(etxtCena.getText().toString()));
 
         MySqlJelo unosJela= null;
-        try {
-            unosJela = new MySqlJelo(this);
-            unosJela.snimiNovoJelo(jeloNovo);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        unosJela = new MySqlJelo(this);
+        unosJela.snimiNovoJelo(jeloNovo);
+        unosJela.setOnPrepraviJelo(new MySqlJelo.IPrepraviJelo() {
+            @Override
+            public void OnPrepraviJelo(int uspesno) {
+                if(uspesno==1){
+                    infoPoruka.newInstance(getBaseContext(),"Obavestenje o ispravci jela","Uspesna ispravka.");
+                }else{
+                    infoPoruka.newInstance(getBaseContext(),"Obavestenje o ispravci jela","Neupesna ispravka jela");
+                }
+            }
+        });
+
+
     }
 
 

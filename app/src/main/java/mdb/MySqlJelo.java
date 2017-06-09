@@ -47,7 +47,7 @@ public class MySqlJelo extends MyDbHelp{
      * Konstruktor za unos. Nap. Ukoliko je sa Id-om ima moguce dodatne operacije kao sto su: <br> Update ili Delete.
      * @param _cont
      */
-    public MySqlJelo(Context _cont) throws SQLException {
+    public MySqlJelo(Context _cont) {
         super(_cont);
         this.cont=_cont;
     }
@@ -57,7 +57,7 @@ public class MySqlJelo extends MyDbHelp{
      * @param _cont
      * @param _id
      */
-    public MySqlJelo(Context _cont, int _id) throws SQLException {
+    public MySqlJelo(Context _cont, int _id) {
         super(_cont);
         this.cont=_cont;
         this.id=_id;
@@ -115,7 +115,7 @@ public class MySqlJelo extends MyDbHelp{
      * Unos novog jela
      * @param _jelo
      */
-    public void snimiNovoJelo(Jelo _jelo) throws SQLException{
+    public void snimiNovoJelo(Jelo _jelo) {
 
         if(!_jelo.equals(null)){
             //TODO. Uraditi Sql upit za delete
