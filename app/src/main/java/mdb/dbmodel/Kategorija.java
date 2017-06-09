@@ -1,7 +1,9 @@
 package mdb.dbmodel;
 
+import com.j256.ormlite.dao.EagerForeignCollection;
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 
@@ -21,6 +23,8 @@ public class Kategorija {
     @DatabaseField(columnName = tKATEGORIJA_naziv)
     private String naziv;
 
+    @ForeignCollectionField(foreignFieldName = "kategorija",eager = true)
+    ForeignCollection<Jelo> jela;
 
     public Kategorija(){
          //Obavezno!!
@@ -30,6 +34,15 @@ public class Kategorija {
     public Kategorija(String _nazivKategorije){
         this.naziv=_nazivKategorije;
 
+
+    }
+
+    public ForeignCollection<Jelo> getJela() {
+        return jela;
+    }
+
+    public void setJela(ForeignCollection<Jelo> jela) {
+        this.jela = jela;
     }
 
     public int getId() {

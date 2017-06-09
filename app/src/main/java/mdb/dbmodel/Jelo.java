@@ -33,9 +33,7 @@ public class Jelo {
     public float kolicina;
 
     @DatabaseField(foreign = true,foreignAutoCreate = true,foreignAutoRefresh = true)
-    public Kategorija kateg;
-
-
+    public Kategorija kategorija;
 
     public Jelo(){
 
@@ -110,11 +108,11 @@ public class Jelo {
     }
 
     public Kategorija getKategorija() {
-        return kateg;
+        return kategorija;
     }
 
     public void setKategorija(Kategorija kategorija) {
-        this.kateg = kategorija;
+        this.kategorija = kategorija;
     }
 
     public void setKolicina(float kolicina) {

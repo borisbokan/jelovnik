@@ -126,7 +126,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
             case R.id.btnSnimi_UnIsJela:
 
-                if(tipOperacije==0){
+                if(tipOperacije==TIP_OPERACIJE_NOVO){
                     noviUnos();
                 }else{
                     ispravka();
@@ -163,19 +163,6 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
         unosJela = new MySqlJelo(this);
         unosJela.snimiNovoJelo(jeloNovo);
-        unosJela.setOnSnimiNovoJelo(new MySqlJelo.ISnimiNovoJelo() {
-            @Override
-            public void OnSnimiNovoJelo(int uspesno) {
-                if(uspesno==1){
-                    infoPoruka.newInstance(getBaseContext(),"Obavestenje snimanja jela","Uspesno snimljeno jelo u bazu.");
-                }else{
-                    infoPoruka.newInstance(getBaseContext(),"Obavestenje snimanja jela","Neupesno snimljena jela");
-                }
-
-            }
-        });
-
-
 
 
     }
@@ -203,7 +190,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
                 }
             }
         });
-
+         finish();
 
     }
 

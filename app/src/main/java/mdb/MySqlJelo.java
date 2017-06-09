@@ -27,20 +27,7 @@ public class MySqlJelo extends MyDbHelp{
     public  IObrisiJelo ObrisiJelo;
 
 
-    public  void setOnSnimiNovoJelo(ISnimiNovoJelo _snimiJelo){
-        SnimiNovoJelo=_snimiJelo;
 
-    }
-
-    public  void setOnPrepraviJelo(IPrepraviJelo _prepraviJelo){
-        PrepraviJelo=_prepraviJelo;
-
-    }
-
-    public void setOnObrisiJelo(IObrisiJelo _obrisiJelo){
-        ObrisiJelo=_obrisiJelo;
-
-    }
 
 
     /**
@@ -62,16 +49,6 @@ public class MySqlJelo extends MyDbHelp{
         this.cont=_cont;
         this.id=_id;
     }
-
-    //Uzimam refer...na MyDbHelper
-   /* private MyDbHelp getDbHelp(){
-        if(dbHelp==null){
-            dbHelp= OpenHelperManager.getHelper(this.cont,MyDbHelp.class);
-        }
-        return dbHelp;
-
-    }*/
-
 
 
     //*************************operaciej nad bazom *****************************************************
@@ -121,7 +98,8 @@ public class MySqlJelo extends MyDbHelp{
             //TODO. Uraditi Sql upit za delete
             int rez= 0;
             try {
-                rez = getDaoJelo().create(this.jelo);
+                rez = getDaoJelo().create(_jelo);
+                infoPoruka.newInstance(cont,"Poruka o snimanju","Uspeh"+ rez);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -196,17 +174,29 @@ public class MySqlJelo extends MyDbHelp{
 
     //***********************Intefejs -> dogadjaji **************************************
     public interface IPrepraviJelo{
-        void OnPrepraviJelo(int uspesno);
+        public void OnPrepraviJelo(int uspesno);
     }
 
     public interface IObrisiJelo{
-        void OnObrisiJelo(int uspesno);
+       public  void OnObrisiJelo(int uspesno);
     }
 
     public interface ISnimiNovoJelo{
-        void OnSnimiNovoJelo(int uspesno);
+       public  void OnSnimiNovoJelo(int uspesno);
     }
 
 
+    public  void setOnSnimiNovoJelo(ISnimiNovoJelo _snimiJelo){
+        SnimiNovoJelo=_snimiJelo;
+    }
+
+    public  void setOnPrepraviJelo(IPrepraviJelo _prepraviJelo){
+        PrepraviJelo=_prepraviJelo;
+    }
+
+    public void setOnObrisiJelo(IObrisiJelo _obrisiJelo){
+        ObrisiJelo=_obrisiJelo;
+
+    }
 
 }

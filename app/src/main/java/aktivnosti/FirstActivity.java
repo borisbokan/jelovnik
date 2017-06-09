@@ -16,25 +16,20 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 import adapteri.DrawMeniAdapter;
-import mdb.MyDbHelp;
 import mdb.MySqlJelo;
 import mdb.MySqlKategorija;
+import mdb.dbmodel.Jelo;
 import mdb.dbmodel.Kategorija;
 import model.NavigacioniMeni;
 import fragmenti.DetaljiFragment;
 import fragmenti.ListaFragment;
+import pomocne.infoPoruka;
 import rs.aleph.android.jelovnik.R;
 
 
-public class FirstActivity extends AppCompatActivity implements ListaFragment.OnItemSelectedListener, AdapterView.OnItemClickListener,MySqlKategorija.ISnimiNovuKategoriju {
+public class FirstActivity extends AppCompatActivity implements ListaFragment.OnItemSelectedListener, AdapterView.OnItemClickListener,MySqlKategorija.ISnimiNovuKategoriju,MySqlJelo.ISnimiNovoJelo {
 
 
 	private boolean landscape;
@@ -70,6 +65,10 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 			Kategorija katStart = new Kategorija();
 			katStart.setNaziv("OSTALO");
 			dbKat.snimiNovuKategoriju(katStart);
+
+			  Jelo jelStart=new Jelo("Slika.jpg","Ostalo jelo","Stratno jelo",231.00,2);
+			  jelStart.setKategorija(katStart);
+			  dbJela.snimiNovoJelo(jelStart);
 		}
 
 		Log.i("br_kat",String.valueOf(brKat));
@@ -237,6 +236,9 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 
 			case R.id.menu_prepravi_jelo:
 				Toast.makeText(this, "Kliknuo na  " +  getString(R.string.fragment_prepravi_jelo), Toast.LENGTH_SHORT).show();
+
+
+
 				break;
 			case R.id.menu_obrisi_jelo:
 				Toast.makeText(this, "Kliknuo na  " + getString(R.string.fragment_obrisi_jelo) , Toast.LENGTH_SHORT).show();
@@ -278,6 +280,15 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		if(uspesno==1){
 
 			Toast.makeText(this,"Uspesno unesena kategorija jela",Toast.LENGTH_LONG).show();
+		}
+	}
+
+	@Override
+	public void OnSnimiNovoJelo(int uspesno) {
+		if(uspesno==1){
+			infoPoruka.newInstance(getBaseContext(),"Obavestenje snimanja jela","Uspesno snimljeno jelo u bazu.");
+		}else{
+			infoPoruka.newInstance(getBaseContext(),"Obavestenje snimanja jela","Neupesno snimljena jela");
 		}
 	}
 }
