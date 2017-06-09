@@ -119,9 +119,13 @@ public class MySqlJelo extends MyDbHelp{
 
         if(!_jelo.equals(null)){
             //TODO. Uraditi Sql upit za delete
-            int rez=getDaoJelo().create(this.jelo);
-            SnimiNovoJelo.OnSnimiNovoJelo(rez);
-           
+            int rez= 0;
+            try {
+                rez = getDaoJelo().create(this.jelo);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
 
         }else{
             infoPoruka.newInstance(cont,"Poruka o gresci","Objekat jelo ima  null vrednsot");
