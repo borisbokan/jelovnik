@@ -2,6 +2,7 @@ package fragmenti;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,7 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -26,6 +26,7 @@ import java.text.DecimalFormat;
 import aktivnosti.UnosIspravkaJela;
 import mdb.MySqlJelo;
 import mdb.dbmodel.Jelo;
+import pomocne.Slike;
 import rs.aleph.android.jelovnik.R;
 
 
@@ -64,8 +65,6 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         txvOpis=(TextView)vi.findViewById(R.id.txtOpis_detalji);
         txvCena=(TextView)vi.findViewById(R.id.txtCena_detalji);
 
-
-
         return vi;
     }
 
@@ -88,18 +87,12 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
 
         selJelo=(Jelo)ListaFragment.expAdapterJelovnik.getChild(this.groPos,this.position);
 
-        InputStream inpStr=null;
-        try {
-            inpStr=getActivity().getAssets().open(selJelo.getSlika().toString());
-            Drawable drawable = Drawable.createFromStream(inpStr, null);
-            imgSlika.setImageDrawable(drawable);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         DecimalFormat decFor=new DecimalFormat("#.00");
         String cena=decFor.format(selJelo.getCena());
 
+        Bitmap btmSlika= Slike.getSlikaIzFajla(selJelo.getSlika());
+
+        imgSlika.setImageBitmap(btmSlika);
         txvNaziv.setText(selJelo.getNaziv());
         txvOpis.setText(selJelo.getOpis());
         txvKategorija.setText(selJelo.getKategorija().getNaziv());
@@ -116,7 +109,6 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         menu.clear();
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_detalji,menu);
-
 
     }
 
@@ -137,7 +129,9 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
           case R.id.menu_det_obrisi_jelo:
 
               MySqlJelo dbJelo=new MySqlJelo(getActivity());
+              dbJelo.setJelo(selJelo);
               dbJelo.obrisiJelo();
+
 
               return super.onOptionsItemSelected(item);
           }

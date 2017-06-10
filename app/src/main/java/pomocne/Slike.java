@@ -94,7 +94,22 @@ public class Slike {
 
     }
 
+    /**
+     * Uzimanje slike iz fajlča tj postavkom fajl path
+     * @param _putanja
+     * @return  Bitmap
+     */
+    public static Bitmap getSlikaIzFajla(String _putanja){
+        File slikaFajl = new File(_putanja);
 
+        if(slikaFajl.exists()){
+
+            Bitmap bitmapSlika = BitmapFactory.decodeFile(_putanja);
+            return bitmapSlika;
+
+        }
+        return null;
+    }
     /**
      * Uzimanje slike iz fajlča tj postavkom fajl path
      * @param _putanja

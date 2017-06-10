@@ -74,24 +74,15 @@ public class MySqlJelo extends MyDbHelp{
      * Brisanje jela
      */
     public void obrisiJelo() {
+        int rez= 0;
 
-        if(getId()!=0){
-            int rez= 0;
-            try {
-                rez = getDaoJelo().deleteById(getId());
+        try {
+                rez = getDaoJelo().delete(jelo);
+                //ObrisiJelo.OnObrisiJelo(rez);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            //ObrisiJelo.OnObrisiJelo(rez);
-
-           
-        }else{
-            infoPoruka.newInstance(cont,"Poruka o gresci","Ne postoji ID zapisa!. Ne mozete prepraviti podatak za Jelo");
-
-        }
-
     }
-
 
     /**
      * Unos novog jela
@@ -166,16 +157,14 @@ public class MySqlJelo extends MyDbHelp{
     }
 
     public int getBrojJela() {
-        int br=0;
+        int br = 0;
         try {
-            br=getDaoJelo().queryForAll().size();
+            br = getDaoJelo().queryForAll().size();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return br;
     }
-
 
     //***********************Intefejs -> dogadjaji **************************************
     public interface IPrepraviJelo{

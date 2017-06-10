@@ -46,6 +46,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
     private Kategorija selKategorija;
     private int id;
+    private String picturePath=null;
 
 
     @Override
@@ -154,7 +155,8 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
         Jelo jeloNovo=new Jelo();
 
-        jeloNovo.setSlika("Slika iz fajla");
+
+        jeloNovo.setSlika(picturePath);
         jeloNovo.setNaziv(etxtNaziv.getText().toString());
         jeloNovo.setOpis(etxtOpis.getText().toString());
         jeloNovo.setCena(Double.valueOf(etxtCena.getText().toString()));
@@ -171,7 +173,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
     private void ispravka() {
         Jelo jeloNovo=new Jelo();
 
-        jeloNovo.setSlika("Slika fajl");
+        jeloNovo.setSlika(jelo.getSlika());
         jeloNovo.setNaziv(etxtNaziv.getText().toString());
         jeloNovo.setOpis(etxtOpis.getText().toString());
         jeloNovo.setCena(Float.valueOf(etxtCena.getText().toString()));
@@ -234,7 +236,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
                 cursor.moveToFirst();
 
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String picturePath = cursor.getString(columnIndex);
+                picturePath = cursor.getString(columnIndex);
                 cursor.close();
                 imgSlika.setImageURI(selectedImage);
                 // String picturePath contains the path of selected Image
