@@ -16,17 +16,7 @@
         android:icon="@mipmap/ic_dodaj_kateg"
         app:showAsAction="ifRoom"
         />
-    <item
-        android:id="@+id/menu_prepravi_jelo"
-        android:title="@string/prepravi_jelo"
-        android:icon="@drawable/ic_action_pen"
-        app:showAsAction="ifRoom"
-        />
-    <item
-        android:id="@+id/menu_obrisi_jelo"
-        android:title="@string/obrisi_jelo"
-        android:icon="@android:drawable/ic_menu_delete"
-        app:showAsAction="ifRoom"/>
+
 
 
 </menu>

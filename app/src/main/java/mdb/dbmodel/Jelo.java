@@ -30,7 +30,7 @@ public class Jelo {
     @DatabaseField(columnName = tJELO_cena)
     public double cena;
     @DatabaseField(columnName = tJELO_kolicina)
-    public float kolicina;
+    public float kolicina=0f;
 
     @DatabaseField(foreign = true,foreignAutoCreate = true,foreignAutoRefresh = true)
     public Kategorija kategorija;
@@ -103,8 +103,8 @@ public class Jelo {
         return kolicina;
     }
 
-    public void setGramaza(float gramaza) {
-        this.kolicina = gramaza;
+    public void setKolicina(float kolicina) {
+        this.kolicina = kolicina;
     }
 
     public Kategorija getKategorija() {
@@ -115,9 +115,7 @@ public class Jelo {
         this.kategorija = kategorija;
     }
 
-    public void setKolicina(float kolicina) {
-        this.kolicina = kolicina;
-    }
+
 
 
 

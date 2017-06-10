@@ -29,7 +29,7 @@ import pomocne.infoPoruka;
 import rs.aleph.android.jelovnik.R;
 
 
-public class FirstActivity extends AppCompatActivity implements ListaFragment.OnItemSelectedListener, AdapterView.OnItemClickListener,MySqlKategorija.ISnimiNovuKategoriju,MySqlJelo.ISnimiNovoJelo {
+public class FirstActivity extends AppCompatActivity implements ListaFragment.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
 
 	private boolean landscape;
@@ -234,15 +234,6 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 
 				break;
 
-			case R.id.menu_prepravi_jelo:
-				Toast.makeText(this, "Kliknuo na  " +  getString(R.string.fragment_prepravi_jelo), Toast.LENGTH_SHORT).show();
-
-
-
-				break;
-			case R.id.menu_obrisi_jelo:
-				Toast.makeText(this, "Kliknuo na  " + getString(R.string.fragment_obrisi_jelo) , Toast.LENGTH_SHORT).show();
-				break;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -275,20 +266,5 @@ public class FirstActivity extends AppCompatActivity implements ListaFragment.On
 		drawerToggle.onConfigurationChanged(configuration);
 	}
 
-	@Override
-	public void OnSnimiNovuKategoriju(int uspesno) {
-		if(uspesno==1){
 
-			Toast.makeText(this,"Uspesno unesena kategorija jela",Toast.LENGTH_LONG).show();
-		}
-	}
-
-	@Override
-	public void OnSnimiNovoJelo(int uspesno) {
-		if(uspesno==1){
-			infoPoruka.newInstance(getBaseContext(),"Obavestenje snimanja jela","Uspesno snimljeno jelo u bazu.");
-		}else{
-			infoPoruka.newInstance(getBaseContext(),"Obavestenje snimanja jela","Neupesno snimljena jela");
-		}
-	}
 }

@@ -1,10 +1,15 @@
 package fragmenti;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -18,6 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 
+import aktivnosti.UnosIspravkaJela;
+import mdb.MySqlJelo;
 import mdb.dbmodel.Jelo;
 import rs.aleph.android.jelovnik.R;
 
@@ -44,6 +51,7 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -65,8 +73,6 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-
         outState.putInt("groPos", position);
         outState.putInt("selPos",groPos);
     }
@@ -94,22 +100,51 @@ public class DetaljiFragment extends Fragment implements View.OnClickListener,Li
         DecimalFormat decFor=new DecimalFormat("#.00");
         String cena=decFor.format(selJelo.getCena());
 
-
         txvNaziv.setText(selJelo.getNaziv());
         txvOpis.setText(selJelo.getOpis());
         txvKategorija.setText(selJelo.getKategorija().getNaziv());
         txvCena.setText(cena + " din");
 
 
-
-            FloatingActionButton fabDodaj=(FloatingActionButton)getView().findViewById(R.id.fabDodaja_detalji);
+         FloatingActionButton fabDodaj=(FloatingActionButton)getView().findViewById(R.id.fabDodaja_detalji);
             fabDodaj.setOnClickListener(this);
 
          }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_detalji,menu);
 
 
-    public void setContent(final int _groPos,final int _position) {
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+          case R.id.menu_det_prepravi_jelo:
+              Intent ispraviJelo=new Intent(getActivity(), UnosIspravkaJela.class);
+              ispraviJelo.putExtra("tip_ope", UnosIspravkaJela.TIP_OPERACIJE_ISPRAVI);
+              ispraviJelo.putExtra("id_jelo",selJelo.getId());
+              startActivity(ispraviJelo);
+
+              Log.i("sel_jelo_id",String.valueOf(selJelo.getId()));
+
+              return super.onOptionsItemSelected(item);
+
+          case R.id.menu_det_obrisi_jelo:
+
+              MySqlJelo dbJelo=new MySqlJelo(getActivity());
+              dbJelo.obrisiJelo();
+
+              return super.onOptionsItemSelected(item);
+          }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void setContent(final int _groPos, final int _position) {
         this.groPos=_groPos;
         this.position=_position;
 

@@ -96,6 +96,7 @@ public class UnosIspravkaJela extends Activity implements View.OnClickListener,M
 
          etxtNaziv.setText(jelo.getNaziv());
          etxtCena.setText(String.valueOf(jelo.getCena()));
+         etxtOpis.setText(jelo.getOpis());
          spKategorije.setSelection(getJeloNaPoziciji());
 
 

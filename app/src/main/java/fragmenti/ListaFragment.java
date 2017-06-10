@@ -2,7 +2,6 @@ package fragmenti;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,19 +11,19 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import mdb.MySqlJelo;
 import mdb.MySqlKategorija;
 import mdb.dbmodel.Jelo;
 import mdb.dbmodel.Kategorija;
 import model.JelovnikExpandAdapter;
+import pomocne.infoPoruka;
 import rs.aleph.android.jelovnik.R;
 
 /**
  * Created by borcha on 13.05.17..
  */
 
-public class ListaFragment extends Fragment {
+public class ListaFragment extends Fragment implements MySqlKategorija.ISnimiNovuKategoriju,MySqlJelo.ISnimiNovoJelo {
 
     private List<mdb.dbmodel.Kategorija> lsKategorije;
     private List<mdb.dbmodel.Jelo> lsJela;
@@ -36,6 +35,7 @@ public class ListaFragment extends Fragment {
      public OnItemSelectedListener listener;
     private int groupPos;
     private int selPosition;
+    private Jelo selJelo;
 
 
     @Override
@@ -88,13 +88,11 @@ public class ListaFragment extends Fragment {
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groPos, int position, long l) {
                 listener.onItemSelected( groPos,position);
 
-                return false;
+
+                return true;
             }
         });
-
-
     }
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -106,6 +104,23 @@ public class ListaFragment extends Fragment {
             listener = (OnItemSelectedListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString() + " must implement OnItemSelectedListener");
+        }
+    }
+
+    @Override
+    public void OnSnimiNovuKategoriju(int uspesno) {
+        if(uspesno==1){
+
+            Toast.makeText(getActivity(),"Uspesno unesena kategorija jela",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void OnSnimiNovoJelo(int uspesno) {
+        if(uspesno==1){
+            infoPoruka.newInstance(getActivity(),"Obavestenje snimanja jela","Uspesno snimljeno jelo u bazu.");
+        }else{
+            infoPoruka.newInstance(getActivity(),"Obavestenje snimanja jela","Neupesno snimljena jela");
         }
     }
 

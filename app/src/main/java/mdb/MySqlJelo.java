@@ -73,11 +73,16 @@ public class MySqlJelo extends MyDbHelp{
     /**
      * Brisanje jela
      */
-    public void obrisiJelo() throws SQLException {
+    public void obrisiJelo() {
+
         if(getId()!=0){
-            //TODO. Uraditi Sql upit za delete
-            int rez=getDaoJelo().deleteById(getId());//Brisem zapis po ID jela
-            ObrisiJelo.OnObrisiJelo(rez);
+            int rez= 0;
+            try {
+                rez = getDaoJelo().deleteById(getId());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            //ObrisiJelo.OnObrisiJelo(rez);
 
            
         }else{
