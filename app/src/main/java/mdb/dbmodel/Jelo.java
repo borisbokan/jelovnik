@@ -16,7 +16,7 @@ public class Jelo {
     public static final String tJELO_opis="opis";
     public static final String tJELO_cena="cena";
     public static final String tJELO_kolicina="kolicina";
-
+    public static final String tJELO_kategorija="kategorija";
 
 
     @DatabaseField(columnName = tJELO_id,generatedId = true)
@@ -32,7 +32,7 @@ public class Jelo {
     @DatabaseField(columnName = tJELO_kolicina)
     public float kolicina=0f;
 
-    @DatabaseField(foreign = true,foreignAutoCreate = true,foreignAutoRefresh = true)
+    @DatabaseField(columnName = tJELO_kategorija,foreign = true,foreignAutoCreate = true,foreignAutoRefresh = true)
     public Kategorija kategorija;
 
     public Jelo(){
